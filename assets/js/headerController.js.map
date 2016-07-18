@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "headerController.js",
+  "sourceRoot": "",
+  "sources": [
+    "headerController.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA,OACA,CAAC,MADD,CACQ,kBADR,EAC4B,CAAC,YAAD,CAD5B,CAEA,CAAC,UAFD,CAEY,YAFZ,EAE0B;EAAC,QAAD,EAAW,YAAX,EAAyB,SAAC,MAAD,EAAS,UAAT;WACjD,MAAM,CAAC,QAAP,GAAkB,SAAA;aAChB,UAAA,CAAW,MAAX,CAAkB,CAAC,IAAnB,CAAA;IADgB;EAD+B,CAAzB;CAF1B"
+}

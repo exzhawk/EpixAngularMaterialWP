@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "indexController.js",
+  "sourceRoot": "",
+  "sources": [
+    "indexController.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA,OACA,CAAC,MADD,CACQ,iBADR,EAC2B,CAAC,YAAD,EAAc,OAAd,EAAsB,YAAtB,CAD3B,CAEA,CAAC,UAFD,CAEY,WAFZ,EAEyB;EAAC,QAAD,EAAW,aAAX,EAA0B,SAAC,MAAD,EAAS,WAAT;WACjD,MAAM,CAAC,KAAP,GAAe,WAAW,CAAC,KAAZ,CAAA;EADkC,CAA1B;CAFzB"
+}

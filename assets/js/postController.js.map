@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "postController.js",
+  "sourceRoot": "",
+  "sources": [
+    "postController.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA,OACA,CAAC,MADD,CACQ,gBADR,EAC0B,CAAC,YAAD,EAAe,OAAf,EAAwB,YAAxB,CAD1B,CAEA,CAAC,UAFD,CAEY,UAFZ,EAEwB;EAAC,QAAD,EAAW,cAAX,EAA2B,aAA3B,EAA0C,SAAC,MAAD,EAAS,YAAT,EAAuB,WAAvB;WAEhE,OAAO,CAAC,GAAR,CAAY,YAAY,CAAC,IAAzB;EAFgE,CAA1C;CAFxB"
+}
