@@ -1,5 +1,6 @@
 <md-content layout="column">
-    <md-card ng-repeat="post in posts" layout="row" layout-xs="column">
+    <md-card ng-repeat="post in posts" layout="row" layout-xs="column"
+             ng-class="{xs: $mdMedia('xs'),sm: $mdMedia('sm'), md: $mdMedia('md'), lg: $mdMedia('lg')}">
         <div class="md-card-image-wrapper" ng-if="post.featured_media!=0">
             <img class="md-card-image w320h320"
                  ng-src="{{post.post_thumbnail.media_details.sizes.w320h320.source_url}}">
