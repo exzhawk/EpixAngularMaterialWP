@@ -53,12 +53,12 @@
 					<md-icon>menu</md-icon>
 				</md-button>
 				<h2>
-					<span>Epix Sphere</span>
+					<a href="./">Epix Sphere</a>
 				</h2>
 				<span flex></span>
 			</div>
 		</md-toolbar>
-		<div ng-view layout-padding></div>
+		<div ng-view layout-padding flex></div>
 	</md-content>
 </div>
 
