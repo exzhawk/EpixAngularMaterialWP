@@ -42,7 +42,7 @@
 	        defer></script>
 </head>
 <body ng-app="EpixAngularMaterialWPApp">
-<div ng-controller="HeaderCtrl" layout="row" layout-fill>
+<div ng-controller="HeaderCtrl" layout="row" flex>
 	<md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
 		233
 	</md-sidenav>
