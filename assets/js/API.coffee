@@ -3,6 +3,8 @@ array2idObject = (items)->
   for item in items
     result[item.id] = item
   return result
+array2firstObject = (items)->
+  return items[0]
 
 angular
 .module 'WPAPI', ['ngResource']
@@ -15,6 +17,12 @@ angular
       method: 'GET'
       isArray: true
       cache: true
+    slug:
+      method: 'GET'
+      isArray: false
+      cache: true
+      transformResponse: [angular.fromJson, array2firstObject]
+
 
 ]
 .factory 'CategoryService', ['$resource', ($resource)->
@@ -51,5 +59,17 @@ angular
     get:
       method: 'GET'
       isArray: false
+      cache: true
+]
+.factory 'CommentService', ['$resource', ($resource)->
+  $resource 'wp-json/wp/v2/comments'
+]
+.factory 'CommentSlugService', ['$resource', ($resource)->
+  $resource 'wp-json/wp/v2/comments_slug',
+    per_page: 100
+  ,
+    query:
+      method: 'GET'
+      isArray: true
       cache: true
 ]

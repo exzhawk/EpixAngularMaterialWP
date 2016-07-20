@@ -1,0 +1,14 @@
+@mixin no-deco-a
+  a:link, a:visited, a:hover, a:active
+    color: inherit
+    text-decoration: none
+
+@mixin no-deco-a-selector($selector)
+  #{a&$selector}:link, #{a&$selector}:visited, #{a&$selector}:hover, #{a&$selector}:active
+    color: inherit
+    text-decoration: none
+
+@mixin link-no-deco
+  &:link, &:visited, &:hover, &:active
+    color: inherit
+    text-decoration: none

@@ -1,1 +1,62 @@
-<div id="233">233</div>
+<md-content layout="column">
+    <md-card layout="column" ng-class="{xs: $mdMedia('xs'),sm: $mdMedia('sm'), md: $mdMedia('md'), lg: $mdMedia('lg')}">
+        <div class="md-card-header" layout="row" layout-xs="column">
+            <div class="md-card-image-wrapper" ng-if="post.featured_media!=0">
+                <img class="md-card-image w320h320"
+                     ng-src="{{post.post_thumbnail.media_details.sizes.w320h320.source_url}}">
+            </div>
+            <div flex layout="column">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline" ng-bind-html="post.title.rendered"></span>
+                    </md-card-title-text>
+                </md-card-title>
+                <div class="md-chips-wrapper">
+                    <md-chips ng-model="post.tags" readonly="true">
+                        <md-chip-template>
+                            <a ng-href="{{tags[$chip].link}}">{{tags[$chip].name}}</a>
+                        </md-chip-template>
+                    </md-chips>
+                </div>
+                <md-card-actions layout="row" layout-wrap>
+                    <md-button>
+                        <md-icon>bookmark</md-icon>
+                        {{post.format}}
+                    </md-button>
+                    <md-button ng-href="{{cats[post.categories[0]].link}}">
+                        <md-icon>label</md-icon>
+                        {{cats[post.categories[0]].name}}
+                    </md-button>
+                    <md-button>
+                        <md-icon>date_range</md-icon>
+                        {{post.date}}
+                    </md-button>
+                    <md-button>
+                        <md-icon>update</md-icon>
+                        {{post.modified}}
+                    </md-button>
+                    <span flex></span>
+                </md-card-actions>
+            </div>
+        </div>
+        <md-card-content ng-bind-html="post.content.rendered">
+        </md-card-content>
+    </md-card>
+    <md-card>
+        <md-list class="comment-list" flex>
+            <md-list-item class="md-3-line" ng-repeat="comment in comments">
+                <a ng-href="{{comment.author_url}}" target="_blank">
+                    <img ng-src="{{comment.author_avatar_urls['48']}}" class="md-avatar">
+                </a>
+                <div class="md-list-item-text" layout="column">
+                    <a ng-href="{{comment.author_url}}" target="_blank" class="author-url">
+                        <h3 ng-bind="comment.author_name"></h3>
+                    </a>
+                    <h4 ng-bind="comment.date"></h4>
+                    <p ng-bind-html="comment.content.rendered"></p>
+                </div>
+                <md-divider ng-if="!$last"></md-divider>
+            </md-list-item>
+        </md-list>
+    </md-card>
+</md-content>
