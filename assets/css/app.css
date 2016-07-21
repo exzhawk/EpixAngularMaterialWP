@@ -47,4 +47,10 @@ md-list {
   color: inherit;
   text-decoration: none; }
 
+md-menu-content {
+  padding: 0; }
+
+md-menu-item > .md-button {
+  text-transform: uppercase !important; }
+
 /*# sourceMappingURL=app.css.map */

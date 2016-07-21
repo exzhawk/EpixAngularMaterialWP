@@ -51,13 +51,33 @@
     <md-content flex>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <md-button ng-click="openLeft()" hide-gt-md>
+                <md-button ng-click="openLeft()" hide-gt-sm>
                     <md-icon>menu</md-icon>
                 </md-button>
                 <h2>
                     <a href="./">Epix Sphere</a>
                 </h2>
                 <span flex></span>
+                <div hide-sm hide-xs>
+                    <md-menu ng-repeat="submenu in menu" md-offset="0 -10">
+                        <md-button ng-click="openMenu($mdOpenMenu,$event)" ng-mouseover="openMenu($mdOpenMenu,$event)">
+                            {{submenu.title}}
+                        </md-button>
+                        <md-menu-content ng-mouseleave="$mdMenu.hide()">
+                            <md-menu-item>
+                                <md-button ng-href="{{submenu.url}}">
+                                    {{submenu.title}}
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-divider ng-if="submenu.children.length!=0"></md-menu-divider>
+                            <md-menu-item ng-repeat="subsubmenu in submenu.children">
+                                <md-button ng-href="{{subsubmenu.url}}">
+                                    {{subsubmenu.title}}
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </div>
             </div>
         </md-toolbar>
         <div ng-view layout-padding flex></div>

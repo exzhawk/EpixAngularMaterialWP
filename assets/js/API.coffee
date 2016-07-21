@@ -22,8 +22,6 @@ angular
       isArray: false
       cache: true
       transformResponse: [angular.fromJson, array2firstObject]
-
-
 ]
 .factory 'CategoryService', ['$resource', ($resource)->
   $resource 'wp-json/wp/v2/categories',
@@ -52,7 +50,6 @@ angular
       isArray: false
       cache: true
       transformResponse: [angular.fromJson, array2idObject]
-
 ]
 .factory 'MediaService', ['$resource', ($resource)->
   $resource 'wp-json/wp/v2/media/:id',
@@ -81,4 +78,14 @@ angular
       method: 'GET'
       isArray: false
       cache: true
+]
+.factory 'MenuService', ['$resource', ($resource)->
+  $resource 'wp-json/wp-api-menus/v2/menu-locations/:location',
+    location: 'primary'
+  ,
+    get:
+      method: 'GET'
+      isArray: true
+      cache: true
+
 ]

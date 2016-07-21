@@ -108,6 +108,18 @@ angular.module('WPAPI', ['ngResource']).factory('PostService', [
       }
     });
   }
+]).factory('MenuService', [
+  '$resource', function($resource) {
+    return $resource('wp-json/wp-api-menus/v2/menu-locations/:location', {
+      location: 'primary'
+    }, {
+      get: {
+        method: 'GET',
+        isArray: true,
+        cache: true
+      }
+    });
+  }
 ]);
 
 //# sourceMappingURL=API.js.map
