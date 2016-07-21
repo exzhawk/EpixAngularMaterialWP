@@ -73,3 +73,12 @@ angular
       isArray: true
       cache: true
 ]
+.factory 'UserService', ['$resource', ($resource)->
+  $resource 'wp-json/wp/v2/users/:userId',
+    userId: CURRENT_USER_ID
+  ,
+    get:
+      method: 'GET'
+      isArray: false
+      cache: true
+]

@@ -30,6 +30,7 @@
         API_URL = '<?php echo rest_get_url_prefix();?>/wp/v2/';
         TEMPLATE_URL = '<?php echo get_template_directory_uri();?>/';
         NONCE = '<?php echo wp_create_nonce('wp_rest');?>';
+        CURRENT_USER_ID = '<?php echo wp_get_current_user()->ID;?>';
     </script>
 
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/app.css">
