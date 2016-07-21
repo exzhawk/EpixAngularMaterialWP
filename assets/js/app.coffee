@@ -1,5 +1,6 @@
 angular
-.module 'EpixAngularMaterialWPApp', ['ngMaterial', 'ngRoute', 'ngMessages', 'headerController','indexController', 'postController']
+.module 'EpixAngularMaterialWPApp', ['ngMaterial', 'ngRoute', 'ngMessages', 'headerController', 'indexController',
+  'postController']
 .config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider)->
   $routeProvider
   .when '/',
@@ -19,6 +20,12 @@ angular
     if config.url.startsWith 'assets/'
       config.url = TEMPLATE_URL + config.url
     config
+.factory 'WPNonce', ($q)->
+  request: (config) ->
+    if config.url.startsWith 'wp-json/'
+      config.headers['X-WP-Nonce'] = NONCE
+    config
 .config ['$httpProvider', ($httpProvider)->
   $httpProvider.interceptors.push('TemplateURLProcessor');
+  $httpProvider.interceptors.push('WPNonce');
 ]

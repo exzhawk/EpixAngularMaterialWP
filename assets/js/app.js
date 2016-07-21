@@ -21,9 +21,19 @@ angular.module('EpixAngularMaterialWPApp', ['ngMaterial', 'ngRoute', 'ngMessages
       return config;
     }
   };
+}).factory('WPNonce', function($q) {
+  return {
+    request: function(config) {
+      if (config.url.startsWith('wp-json/')) {
+        config.headers['X-WP-Nonce'] = NONCE;
+      }
+      return config;
+    }
+  };
 }).config([
   '$httpProvider', function($httpProvider) {
-    return $httpProvider.interceptors.push('TemplateURLProcessor');
+    $httpProvider.interceptors.push('TemplateURLProcessor');
+    return $httpProvider.interceptors.push('WPNonce');
   }
 ]);
 
