@@ -29,3 +29,8 @@ angular
   $httpProvider.interceptors.push('TemplateURLProcessor');
   $httpProvider.interceptors.push('WPNonce');
 ]
+.config ['$mdThemingProvider', ($mdThemingProvider)->
+  $mdThemingProvider.theme('footer-dark', 'default')
+  .dark()
+  return
+]

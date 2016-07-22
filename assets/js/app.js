@@ -35,6 +35,10 @@ angular.module('EpixAngularMaterialWPApp', ['ngMaterial', 'ngRoute', 'ngMessages
     $httpProvider.interceptors.push('TemplateURLProcessor');
     return $httpProvider.interceptors.push('WPNonce');
   }
+]).config([
+  '$mdThemingProvider', function($mdThemingProvider) {
+    $mdThemingProvider.theme('footer-dark', 'default').dark();
+  }
 ]);
 
 //# sourceMappingURL=app.js.map

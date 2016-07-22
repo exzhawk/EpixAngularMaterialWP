@@ -69,4 +69,8 @@ md-input-container .md-errors-spacer {
 .sub-comment {
   margin-left: 80px; }
 
+.footer .md-button {
+  white-space: normal;
+  text-transform: none !important; }
+
 /*# sourceMappingURL=app.css.map */
