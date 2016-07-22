@@ -19,6 +19,11 @@ angular
       $rootScope.current_user = null
     else
       $rootScope.current_user = UserService.get {}, ->
+    $scope.keyword = ''
+    $scope.search = ->
+      if $scope.keyword.length != 0
+        search_url = 'https://www.google.com/search?q=site%3A' + BLOG_BARE_URL + '+' + $scope.keyword
+        location.href = search_url
     $scope.menu = MenuService.get()
 
 ]

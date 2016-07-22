@@ -31,6 +31,7 @@
         TEMPLATE_URL = '<?php echo get_template_directory_uri();?>/';
         NONCE = '<?php echo wp_create_nonce('wp_rest');?>';
         CURRENT_USER_ID = '<?php echo wp_get_current_user()->ID;?>';
+        BLOG_BARE_URL = '<?php echo preg_replace('#^https?://#', '', rtrim(get_bloginfo('url'), '/'));?>'
     </script>
 
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/app.css">
@@ -46,7 +47,23 @@
 <body ng-app="EpixAngularMaterialWPApp">
 <div ng-controller="HeaderCtrl" layout="row" flex>
     <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
-        233
+        <form layout-padding layout="row" ng-submit="search()">
+            <md-input-container flex>
+                <label>&nbsp;</label>
+                <input ng-model="keyword" placeholder="Type to Search" type="text" flex>
+            </md-input-container>
+            <md-button class="md-icon-button" ng-disabled="keyword.length==0" ng-click="search()">
+                <md-icon>search</md-icon>
+            </md-button>
+        </form>
+        <md-list ng-repeat="submenu in menu">
+            <md-list-item ng-href="{{submenu.url}}">
+                <p>{{submenu.title}}</p>
+            </md-list-item>
+            <md-list-item class="submenu" ng-repeat="subsubmenu in submenu.children" ng-href="{{subsubmenu.url}}">
+                <p>{{subsubmenu.title}}</p>
+            </md-list-item>
+        </md-list>
     </md-sidenav>
     <md-content flex>
         <md-toolbar>
@@ -58,7 +75,16 @@
                     <a href="./">Epix Sphere</a>
                 </h2>
                 <span flex></span>
-                <div hide-sm hide-xs>
+                <div hide-sm hide-xs layout="row">
+                    <form ng-submit="search()">
+                        <md-input-container>
+                            <label>&nbsp;</label>
+                            <input ng-model="keyword" placeholder="Type to Search" type="text">
+                        </md-input-container>
+                        <md-button class="md-icon-button" ng-disabled="keyword.length==0" ng-click="search()">
+                            <md-icon>search</md-icon>
+                        </md-button>
+                    </form>
                     <md-menu ng-repeat="submenu in menu" md-offset="0 -10">
                         <md-button ng-click="openMenu($mdOpenMenu,$event)" ng-mouseover="openMenu($mdOpenMenu,$event)">
                             {{submenu.title}}

@@ -20,6 +20,14 @@ angular.module('headerController', ['ngMaterial', 'WPAPI']).controller('HeaderCt
     } else {
       $rootScope.current_user = UserService.get({}, function() {});
     }
+    $scope.keyword = '';
+    $scope.search = function() {
+      var search_url;
+      if ($scope.keyword.length !== 0) {
+        search_url = 'https://www.google.com/search?q=site%3A' + BLOG_BARE_URL + '+' + $scope.keyword;
+        return location.href = search_url;
+      }
+    };
     return $scope.menu = MenuService.get();
   }
 ]);
