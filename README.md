@@ -25,10 +25,14 @@ Too many assets for a single page
 
 Too many requests for a single page
 
-Number of tags and categories are limited
+Max number of tags/categories/comments are limited to 100
 
-Page title no editable
+Page title not editable
 
 Too many internal call for rest api
 
-Css not organized
+CSS not organized
+
+No paging yet
+
+Header/Footer not editable
