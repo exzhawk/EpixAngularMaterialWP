@@ -43,8 +43,8 @@
         </md-card-content>
     </md-card>
     <md-card>
-        <md-list class="comment-list" flex>
-            <md-list-item class="md-3-line" ng-repeat="comment in comments">
+        <md-list class="comment-list" flex ng-repeat="comment in comments">
+            <md-list-item class="md-3-line">
                 <a ng-href="{{comment.author_url}}" target="_blank">
                     <img ng-src="{{comment.author_avatar_urls['48']}}" class="md-avatar">
                 </a>
@@ -59,8 +59,26 @@
                     <md-icon>reply</md-icon>
                     reply
                 </md-button>
-                <md-divider></md-divider>
             </md-list-item>
+            <md-divider md-inset ng-if="comment.children.length!=0"></md-divider>
+            <md-list-item class="md-3-line sub-comment" ng-repeat="subcomment in comment.children">
+                <a ng-href="{{subcomment.author_url}}" target="_blank">
+                    <img ng-src="{{subcomment.author_avatar_urls['48']}}" class="md-avatar">
+                </a>
+                <div class="md-list-item-text" layout="column">
+                    <a ng-href="{{subcomment.author_url}}" target="_blank" class="author-url">
+                        <h3 ng-bind="subcomment.author_name"></h3>
+                    </a>
+                    <h4 ng-bind="subcomment.date"></h4>
+                    <p ng-bind-html="subcomment.content.rendered"></p>
+                </div>
+                <!--<md-button class="md-secondary">-->
+                <!--<md-icon>reply</md-icon>-->
+                <!--reply-->
+                <!--</md-button>-->
+                <md-divider md-inset ng-if="!$last"></md-divider>
+            </md-list-item>
+            <md-divider></md-divider>
         </md-list>
         <md-card-content>
             <md-subheader>Leave a reply</md-subheader>

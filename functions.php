@@ -64,15 +64,29 @@ function get_post_thumbnail( $object, $field_name, $request ) {
 add_action( 'rest_api_init', 'reg_post_thumbnail' );
 
 function get_comments_by_slug( WP_REST_Request $request ) {
-	$slug = $request['slug'];
+	$slug   = $request['slug'];
 	$post   = get_page_by_path( $slug, ARRAY_A, 'post' );
 	$server = rest_get_server();
 	ob_start();
 	unset( $_GET['slug'] );
 	$_GET['post'] = $post['ID'];
 	$server->serve_request( '/wp/v2/comments' );
-	$result = json_decode( ob_get_contents() );
+	$comments = json_decode( ob_get_contents() );
 	ob_end_clean();
+	$lookup = array();
+	foreach ( $comments as $comment ) {
+		$comment->children      = array();
+		$lookup[ $comment->id ] = $comment;
+	}
+	$result = array();
+	foreach ( $comments as $comment ) {
+		if ( $comment->parent != 0 ) {
+			$parent_comment = $lookup[ $comment->parent ];
+			array_push( $parent_comment->children, $comment );
+		} else {
+			array_push( $result, $comment );
+		}
+	}
 	$response = new WP_REST_Response( $result );
 
 	return $response;
