@@ -15,10 +15,12 @@ angular
       return
     $scope.openLeft = ->
       $mdSidenav('left').open()
+    $scope.current_user_id = CURRENT_USER_ID
     if CURRENT_USER_ID == "0"
       $rootScope.current_user = null
     else
-      $rootScope.current_user = UserService.get {}, ->
+      $scope.adminUrl = BLOG_URL + '/wp-admin/'
+      $rootScope.current_user = UserService.get {}
     $scope.keyword = ''
     $scope.search = ->
       if $scope.keyword.length != 0

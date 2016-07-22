@@ -31,6 +31,7 @@
         TEMPLATE_URL = '<?php echo get_template_directory_uri();?>/';
         NONCE = '<?php echo wp_create_nonce('wp_rest');?>';
         CURRENT_USER_ID = '<?php echo wp_get_current_user()->ID;?>';
+        BLOG_URL = '<?php echo rtrim(get_bloginfo('url'), '/');?>';
         BLOG_BARE_URL = '<?php echo preg_replace('#^https?://#', '', rtrim(get_bloginfo('url'), '/'));?>'
     </script>
 
@@ -104,6 +105,9 @@
                         </md-menu-content>
                     </md-menu>
                 </div>
+                <md-button ng-if="current_user_id!='0'" ng-href="{{adminUrl}}" class="md-icon-button" target="_blank">
+                    <md-icon>build</md-icon>
+                </md-button>
             </div>
         </md-toolbar>
         <div ng-view layout-padding flex></div>
