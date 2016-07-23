@@ -3,6 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="theme-color" content="#3F51B5">
 	<base href="<?php bloginfo( 'url' ); ?>/">
 	<title>Blog ww</title>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
