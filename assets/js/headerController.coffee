@@ -13,8 +13,7 @@ angular
         if target[0].tagName == 'MD-BACKDROP' and target.hasClass('md-menu-backdrop') and !target.hasClass('ng-enter')
           $mdMenu.hide()
       return
-    $scope.openLeft = ->
-      $mdSidenav('left').open()
+    $scope.$mdSidenav = $mdSidenav
     $scope.current_user_id = CURRENT_USER_ID
     if CURRENT_USER_ID == "0"
       $rootScope.current_user = null

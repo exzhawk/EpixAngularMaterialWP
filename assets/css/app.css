@@ -59,6 +59,12 @@ md-menu-item > .md-button {
   padding-left: 32px; }
 .md-sidenav-left .md-button.md-icon-button {
   margin: 18px 6px; }
+.md-sidenav-left > md-content {
+  height: 56px; }
+.md-sidenav-left .sidenav-title {
+  font-size: 20px;
+  font-weight: normal;
+  margin: auto; }
 
 md-input-container .md-errors-spacer {
   min-height: 0; }
@@ -72,5 +78,11 @@ md-input-container .md-errors-spacer {
 .footer .md-button {
   white-space: normal;
   text-transform: none !important; }
+
+body > md-content#main {
+  overflow: hidden; }
+
+md-list.comment-list md-list-item .md-secondary {
+  top: 33px; }
 
 /*# sourceMappingURL=app.css.map */

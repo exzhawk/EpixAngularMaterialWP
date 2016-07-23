@@ -12,9 +12,7 @@ angular.module('headerController', ['ngMaterial', 'WPAPI']).controller('HeaderCt
         }
       });
     };
-    $scope.openLeft = function() {
-      return $mdSidenav('left').open();
-    };
+    $scope.$mdSidenav = $mdSidenav;
     $scope.current_user_id = CURRENT_USER_ID;
     if (CURRENT_USER_ID === "0") {
       $rootScope.current_user = null;

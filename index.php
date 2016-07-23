@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="EpixAngularMaterialWPApp" ng-controller="HeaderCtrl">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -49,72 +49,77 @@
 	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/postController.js" type="text/javascript"
 	        defer></script>
 </head>
-<body ng-app="EpixAngularMaterialWPApp">
-<div ng-controller="HeaderCtrl" layout="row" flex>
-	<md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
-		<!--		todo add back button-->
-		<form layout-padding layout="row" ng-submit="search()">
-			<md-input-container flex>
-				<label>&nbsp;</label>
-				<input ng-model="keyword" placeholder="Type to Search" type="text" flex>
-			</md-input-container>
-			<md-button class="md-icon-button" ng-disabled="keyword.length==0" ng-click="search()">
-				<md-icon>search</md-icon>
+<body layout="row" layout-fill>
+<md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
+	<md-content layout="row">
+		<md-button ng-click="$mdSidenav('left').close()">
+			<md-icon>arrow_back</md-icon>
+		</md-button>
+		<h3 flex class="sidenav-title">Epix Sphere</h3>
+	</md-content>
+	<form layout-padding layout="row" ng-submit="search()">
+		<md-input-container flex>
+			<label>&nbsp;</label>
+			<input ng-model="keyword" placeholder="Type to Search" type="text" flex>
+		</md-input-container>
+		<md-button class="md-icon-button" ng-disabled="keyword.length==0" ng-click="search()">
+			<md-icon>search</md-icon>
+		</md-button>
+	</form>
+	<md-list ng-repeat="submenu in menu">
+		<md-list-item ng-href="{{submenu.url}}">
+			<p>{{submenu.title}}</p>
+		</md-list-item>
+		<md-list-item class="submenu" ng-repeat="subsubmenu in submenu.children" ng-href="{{subsubmenu.url}}">
+			<p>{{subsubmenu.title}}</p>
+		</md-list-item>
+	</md-list>
+</md-sidenav>
+<md-content flex layout="column" id="main">
+	<md-toolbar md-scroll-shrink>
+		<div class="md-toolbar-tools">
+			<md-button ng-click="$mdSidenav('left').open()" hide-gt-sm>
+				<md-icon>menu</md-icon>
 			</md-button>
-		</form>
-		<md-list ng-repeat="submenu in menu">
-			<md-list-item ng-href="{{submenu.url}}">
-				<p>{{submenu.title}}</p>
-			</md-list-item>
-			<md-list-item class="submenu" ng-repeat="subsubmenu in submenu.children" ng-href="{{subsubmenu.url}}">
-				<p>{{subsubmenu.title}}</p>
-			</md-list-item>
-		</md-list>
-	</md-sidenav>
-	<md-content flex>
-		<md-toolbar>
-			<div class="md-toolbar-tools">
-				<md-button ng-click="openLeft()" hide-gt-sm>
-					<md-icon>menu</md-icon>
-				</md-button>
-				<h2>
-					<a href="./">Epix Sphere</a>
-				</h2>
-				<span flex></span>
-				<div hide-sm hide-xs layout="row">
-					<form ng-submit="search()">
-						<md-input-container>
-							<label>&nbsp;</label>
-							<input ng-model="keyword" placeholder="Type to Search" type="text">
-						</md-input-container>
-						<md-button class="md-icon-button" ng-disabled="keyword.length==0" ng-click="search()">
-							<md-icon>search</md-icon>
-						</md-button>
-					</form>
-					<md-menu ng-repeat="submenu in menu" md-offset="0 -10">
-						<md-button ng-click="openMenu($mdOpenMenu,$event)" ng-mouseover="openMenu($mdOpenMenu,$event)">
-							{{submenu.title}}
-						</md-button>
-						<md-menu-content ng-mouseleave="$mdMenu.hide()">
-							<md-menu-item>
-								<md-button ng-href="{{submenu.url}}">
-									{{submenu.title}}
-								</md-button>
-							</md-menu-item>
-							<md-menu-divider ng-if="submenu.children.length!=0"></md-menu-divider>
-							<md-menu-item ng-repeat="subsubmenu in submenu.children">
-								<md-button ng-href="{{subsubmenu.url}}">
-									{{subsubmenu.title}}
-								</md-button>
-							</md-menu-item>
-						</md-menu-content>
-					</md-menu>
-				</div>
-				<md-button ng-if="current_user_id!='0'" ng-href="{{adminUrl}}" class="md-icon-button" target="_blank">
-					<md-icon>build</md-icon>
-				</md-button>
+			<h2>
+				<a href="./">Epix Sphere</a>
+			</h2>
+			<span flex></span>
+			<div hide-sm hide-xs layout="row">
+				<form ng-submit="search()">
+					<md-input-container>
+						<label>&nbsp;</label>
+						<input ng-model="keyword" placeholder="Type to Search" type="text">
+					</md-input-container>
+					<md-button class="md-icon-button" ng-disabled="keyword.length==0" ng-click="search()">
+						<md-icon>search</md-icon>
+					</md-button>
+				</form>
+				<md-menu ng-repeat="submenu in menu" md-offset="0 -10">
+					<md-button ng-click="openMenu($mdOpenMenu,$event)" ng-mouseover="openMenu($mdOpenMenu,$event)">
+						{{submenu.title}}
+					</md-button>
+					<md-menu-content ng-mouseleave="$mdMenu.hide()">
+						<md-menu-item>
+							<md-button ng-href="{{submenu.url}}">
+								{{submenu.title}}
+							</md-button>
+						</md-menu-item>
+						<md-menu-divider ng-if="submenu.children.length!=0"></md-menu-divider>
+						<md-menu-item ng-repeat="subsubmenu in submenu.children">
+							<md-button ng-href="{{subsubmenu.url}}">
+								{{subsubmenu.title}}
+							</md-button>
+						</md-menu-item>
+					</md-menu-content>
+				</md-menu>
 			</div>
-		</md-toolbar>
+			<md-button ng-if="current_user_id!='0'" ng-href="{{adminUrl}}" class="md-icon-button" target="_blank">
+				<md-icon>build</md-icon>
+			</md-button>
+		</div>
+	</md-toolbar>
+	<md-content>
 		<div ng-view layout-padding flex></div>
 		<md-content class='footer' md-theme="footer-dark" layout="row" layout-wrap>
 			<md-button ng-href="http://creativecommons.org/licenses/by-sa/4.0/">
@@ -132,7 +137,6 @@
 			</md-button>
 		</md-content>
 	</md-content>
-</div>
-
+</md-content>
 </body>
 </html>
