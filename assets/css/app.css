@@ -88,4 +88,7 @@ md-list.comment-list md-list-item .md-secondary {
 #main {
   word-break: break-word; }
 
+a {
+  text-decoration: none; }
+
 /*# sourceMappingURL=app.css.map */

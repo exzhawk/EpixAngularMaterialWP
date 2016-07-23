@@ -49,7 +49,7 @@
 	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/postController.js" type="text/javascript"
 	        defer></script>
 </head>
-<body layout="row" layout-fill>
+<body layout="row" layout-fill ng-cloak>
 <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
 	<md-content layout="row">
 		<md-button ng-click="$mdSidenav('left').close()">
