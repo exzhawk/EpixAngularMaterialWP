@@ -18,4 +18,18 @@ angular
       CommentService.save $scope.reply
     return
 ]
+.run ->
+  scrollButton = ->
+    mainContent = document.querySelector('#main > md-content')
+    transformMargin = parseInt(mainContent.style.transform.replace('translate3d(0px, ', '').replace('px, 0px)', ''))
+    footerHeight = document.querySelector('.footer').scrollHeight
+    offsetMargin = 10
+    transformHeight = -mainContent.scrollHeight + mainContent.clientHeight + mainContent.scrollTop - transformMargin + footerHeight - offsetMargin
+    try
+      document.querySelector('#pop-comment-button').style.transform = 'translateY(' + transformHeight + 'px) translateX(20px)'
 
+    requestAnimationFrame scrollButton
+  #  angular.element(document.querySelector('#main > md-content')).on 'scroll', (e)->
+  #    scrollButton()
+
+  requestAnimationFrame scrollButton

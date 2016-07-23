@@ -125,7 +125,6 @@
 		<div ng-view layout-padding flex></div>
 		<md-content class='footer' md-theme="footer-dark" layout="row" layout-wrap>
 			<md-button ng-href="http://creativecommons.org/licenses/by-sa/4.0/">
-				<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"/>
 				All contents without explicit declaration are licensed under CC-SA-4.0 License
 			</md-button>
 			<md-button ng-href="https://wordpress.org/">

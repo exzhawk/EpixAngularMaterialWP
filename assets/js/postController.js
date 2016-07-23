@@ -23,6 +23,21 @@ angular.module('postController', ['ngMaterial', 'WPAPI', 'ngSanitize', 'ngMessag
       return CommentService.save($scope.reply);
     };
   }
-]);
+]).run(function() {
+  var scrollButton;
+  scrollButton = function() {
+    var footerHeight, mainContent, offsetMargin, transformHeight, transformMargin;
+    mainContent = document.querySelector('#main > md-content');
+    transformMargin = parseInt(mainContent.style.transform.replace('translate3d(0px, ', '').replace('px, 0px)', ''));
+    footerHeight = document.querySelector('.footer').scrollHeight;
+    offsetMargin = 10;
+    transformHeight = -mainContent.scrollHeight + mainContent.clientHeight + mainContent.scrollTop - transformMargin + footerHeight - offsetMargin;
+    try {
+      document.querySelector('#pop-comment-button').style.transform = 'translateY(' + transformHeight + 'px) translateX(20px)';
+    } catch (undefined) {}
+    return requestAnimationFrame(scrollButton);
+  };
+  return requestAnimationFrame(scrollButton);
+});
 
 //# sourceMappingURL=postController.js.map

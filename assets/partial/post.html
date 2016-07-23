@@ -1,4 +1,7 @@
-<md-content layout="column">
+<md-content layout="column" id="article-wrapper">
+    <md-button class="md-fab md-fab-bottom-right" id="pop-comment-button" ng-click="showAdd($event)">
+    <md-icon>comment</md-icon>
+    </md-button>
     <md-card layout="column" ng-class="{xs: $mdMedia('xs'),sm: $mdMedia('sm'), md: $mdMedia('md'), lg: $mdMedia('lg')}">
         <div class="md-card-header" layout="row" layout-xs="column">
             <div class="md-card-image-wrapper" ng-if="post.featured_media!=0">
