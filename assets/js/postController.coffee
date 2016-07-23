@@ -27,9 +27,5 @@ angular
     transformHeight = -mainContent.scrollHeight + mainContent.clientHeight + mainContent.scrollTop - transformMargin + footerHeight - offsetMargin
     try
       document.querySelector('#pop-comment-button').style.transform = 'translateY(' + transformHeight + 'px) translateX(20px)'
-
     requestAnimationFrame scrollButton
-  #  angular.element(document.querySelector('#main > md-content')).on 'scroll', (e)->
-  #    scrollButton()
-
   requestAnimationFrame scrollButton
