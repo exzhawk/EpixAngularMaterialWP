@@ -39,6 +39,10 @@ angular.module('EpixAngularMaterialWPApp', ['ngMaterial', 'ngRoute', 'ngMessages
   '$mdThemingProvider', function($mdThemingProvider) {
     $mdThemingProvider.theme('footer-dark', 'default').dark();
   }
-]);
+]).run(function($rootScope) {
+  return $rootScope.$on('$routeChangeSuccess', function() {
+    return document.querySelector('#main > md-content').scrollTop = 0;
+  });
+});
 
 //# sourceMappingURL=app.js.map

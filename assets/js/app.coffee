@@ -34,3 +34,6 @@ angular
   .dark()
   return
 ]
+.run ($rootScope)->
+  $rootScope.$on '$routeChangeSuccess', ->
+    document.querySelector('#main > md-content').scrollTop = 0
