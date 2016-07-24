@@ -66,7 +66,7 @@ md-menu-item > .md-button {
   font-weight: normal;
   margin: auto; }
 
-md-input-container .md-errors-spacer {
+md-toolbar md-input-container .md-errors-spacer {
   min-height: 0; }
 
 .md-toolbar-tools md-input-container {
@@ -99,5 +99,18 @@ a {
 
 body {
   overflow-y: hidden; }
+
+html {
+  overflow-y: hidden !important; }
+
+md-bottom-sheet.comment-popup.md, md-bottom-sheet.comment-popup.lg {
+  margin-left: auto;
+  margin-right: 18px;
+  max-width: 708px; }
+md-bottom-sheet.comment-popup form md-icon {
+  color: grey; }
+
+#main > md-toolbar {
+  z-index: 100; }
 
 /*# sourceMappingURL=app.css.map */

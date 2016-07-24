@@ -3,14 +3,11 @@ angular
 .controller 'HeaderCtrl', ['$scope', '$rootScope', '$mdSidenav', '$mdMenu', 'UserService', 'MenuService',
   ($scope, $rootScope, $mdSidenav, $mdMenu, UserService, MenuService)->
     $scope.$mdMenu = $mdMenu
-    #    $scope.testMenu = ($mdOpenMenu, $event)->
-    #      console.log $mdMenu
-    #      console.log $mdOpenMenu
     $scope.openMenu = ($mdOpenMenu, $event)->
       $mdOpenMenu($event)
       angular.element(document).bind 'mousemove', (e)->
         target = angular.element(e.target)
-        if target[0].tagName == 'MD-BACKDROP' and target.hasClass('md-menu-backdrop') and !target.hasClass('ng-enter')
+        if target[0].tagName == 'MD-BACKDROP' and target.hasClass('md-menu-backdrop')
           $mdMenu.hide()
       return
     $scope.$mdSidenav = $mdSidenav

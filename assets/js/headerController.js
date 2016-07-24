@@ -7,7 +7,7 @@ angular.module('headerController', ['ngMaterial', 'WPAPI']).controller('HeaderCt
       angular.element(document).bind('mousemove', function(e) {
         var target;
         target = angular.element(e.target);
-        if (target[0].tagName === 'MD-BACKDROP' && target.hasClass('md-menu-backdrop') && !target.hasClass('ng-enter')) {
+        if (target[0].tagName === 'MD-BACKDROP' && target.hasClass('md-menu-backdrop')) {
           return $mdMenu.hide();
         }
       });

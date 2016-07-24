@@ -68,7 +68,8 @@ md-menu-item > .md-button
     font-weight: normal
     margin: auto
 
-md-input-container .md-errors-spacer
+// fix dislocation of input in toolbar
+md-toolbar md-input-container .md-errors-spacer
   min-height: 0
 
 .md-toolbar-tools md-input-container
@@ -102,3 +103,21 @@ a
 // hide body scroll bar when bottom sheet shown
 body
   overflow-y: hidden
+
+// hide html scroll bar when menu shown
+html
+  overflow-y: hidden !important
+
+// no full width when screen is large
+md-bottom-sheet.comment-popup
+  &.md, &.lg
+    margin-left: auto
+    margin-right: 18px
+    max-width: 708px
+
+  form md-icon
+    color: grey
+
+
+#main > md-toolbar
+  z-index: 100

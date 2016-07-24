@@ -6,7 +6,8 @@ angular.module('postController', ['ngMaterial', 'WPAPI', 'ngSanitize', 'ngMessag
       author_name: '',
       author_email: '',
       author_url: '',
-      content: ''
+      content: '',
+      parent: 0
     };
     $scope.post = PostService.slug({
       slug: $routeParams.slug
@@ -16,7 +17,6 @@ angular.module('postController', ['ngMaterial', 'WPAPI', 'ngSanitize', 'ngMessag
     $scope.cats = CategoryService.queryObject();
     $scope.tags = TagService.queryObject();
     $scope.$mdMedia = $mdMedia;
-    $scope.$mdBottomSheet = $mdBottomSheet;
     $scope.comments = CommentSlugService.query({
       slug: $routeParams.slug
     });
@@ -25,7 +25,6 @@ angular.module('postController', ['ngMaterial', 'WPAPI', 'ngSanitize', 'ngMessag
       return CommentService.save($scope.reply);
     };
     $scope.hideBottomSheet = function() {
-      console.log(233);
       return $mdBottomSheet.hide();
     };
     $scope.popComment = function() {
@@ -47,21 +46,6 @@ angular.module('postController', ['ngMaterial', 'WPAPI', 'ngSanitize', 'ngMessag
     buttonElement = $compile(buttonHtml)($scope);
     angular.element(document).find('body').append(buttonElement);
   }
-]).run(function() {
-  var scrollButton;
-  scrollButton = function() {
-    var footerHeight, mainContent, offsetMargin, transformHeight, transformMargin;
-    mainContent = document.querySelector('#main > md-content');
-    transformMargin = parseInt(mainContent.style.transform.replace('translate3d(0px, ', '').replace('px, 0px)', ''));
-    footerHeight = document.querySelector('.footer').scrollHeight;
-    offsetMargin = 10;
-    transformHeight = -mainContent.scrollHeight + mainContent.clientHeight + mainContent.scrollTop - transformMargin + footerHeight - offsetMargin;
-    try {
-
-    } catch (undefined) {}
-    return requestAnimationFrame(scrollButton);
-  };
-  return requestAnimationFrame(scrollButton);
-});
+]);
 
 //# sourceMappingURL=postController.js.map
