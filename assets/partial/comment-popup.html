@@ -1,0 +1,41 @@
+<md-bottom-sheet layout="column" ng-cloak class="comment-popup">
+    <div class="md-toolbar-tools" layout="row">
+        <md-subheader>
+            <span>Leave a reply</span>
+        </md-subheader>
+        <span flex></span>
+        <md-button ng-click="commentCtrl.parent.hideBottomSheet()">
+            <md-icon>cancel</md-icon>
+        </md-button>
+    </div>
+    <form name="reply_form">
+        <md-input-container>
+            <label>Name</label>
+            <input ng-model="commentCtrl.parent.reply.author_name" name="name" required>
+            <div ng-messages="reply_form.name.$error">
+                <div ng-message="required">This is required</div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Email</label>
+            <input ng-model="commentCtrl.parent.reply.author_email" name="email" type="email" required>
+            <div ng-messages="reply_form.email.$error">
+                <div ng-message="required">This is required</div>
+                <div ng-message="email">This is not an email</div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>URL</label>
+            <input ng-model="commentCtrl.parent.reply.author_url" name="website">
+        </md-input-container>
+        <md-input-container class="md-block">
+            <label>Content</label>
+            <textarea ng-model="commentCtrl.parent.reply.content" rows="10" name="content" required></textarea>
+            <div ng-messages="reply_form.content.$error">
+                <div ng-message="required">This is required</div>
+            </div>
+        </md-input-container>
+        <md-button ng-click="commentCtrl.parent.post_comment()">submit</md-button>
+        <!--<md-button ng-disabled="reply_form.$invalid" ng-click="post_comment()">submit</md-button>-->
+    </form>
+</md-bottom-sheet>

@@ -1,7 +1,4 @@
 <md-content layout="column" id="article-wrapper">
-    <md-button class="md-fab md-fab-bottom-right" id="pop-comment-button" ng-click="showAdd($event)">
-    <md-icon>comment</md-icon>
-    </md-button>
     <md-card layout="column" ng-class="{xs: $mdMedia('xs'),sm: $mdMedia('sm'), md: $mdMedia('md'), lg: $mdMedia('lg')}">
         <div class="md-card-header" layout="row" layout-xs="column">
             <div class="md-card-image-wrapper" ng-if="post.featured_media!=0">
@@ -75,46 +72,12 @@
                     <h4 ng-bind="subcomment.date"></h4>
                     <p ng-bind-html="subcomment.content.rendered"></p>
                 </div>
-                <!--<md-button class="md-secondary">-->
-                <!--<md-icon>reply</md-icon>-->
-                <!--reply-->
-                <!--</md-button>-->
                 <md-divider md-inset ng-if="!$last"></md-divider>
             </md-list-item>
             <md-divider></md-divider>
         </md-list>
         <md-card-content>
-            <md-subheader>Leave a reply</md-subheader>
-            <form name="reply_form">
-                <md-input-container>
-                    <label>Name</label>
-                    <input ng-model="reply.author_name" name="name" required>
-                    <div ng-messages="reply_form.name.$error">
-                        <div ng-message="required">This is required</div>
-                    </div>
-                </md-input-container>
-                <md-input-container>
-                    <label>Email</label>
-                    <input ng-model="reply.author_email" name="email" type="email" required>
-                    <div ng-messages="reply_form.email.$error">
-                        <div ng-message="required">This is required</div>
-                        <div ng-message="email">This is not an email</div>
-                    </div>
-                </md-input-container>
-                <md-input-container>
-                    <label>Website</label>
-                    <input ng-model="reply.author_url" name="website">
-                </md-input-container>
-                <md-input-container class="md-block">
-                    <label>Content</label>
-                    <textarea ng-model="reply.content" rows="10" name="content" required></textarea>
-                    <div ng-messages="reply_form.content.$error">
-                        <div ng-message="required">This is required</div>
-                    </div>
-                </md-input-container>
-                <md-button ng-click="post_comment()">submit</md-button>
-                <!--<md-button ng-disabled="reply_form.$invalid" ng-click="post_comment()">submit</md-button>-->
-            </form>
+
         </md-card-content>
     </md-card>
 </md-content>

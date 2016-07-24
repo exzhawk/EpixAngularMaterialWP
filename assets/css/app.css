@@ -97,4 +97,7 @@ a {
 #article-wrapper {
   overflow: visible; }
 
+body {
+  overflow-y: hidden; }
+
 /*# sourceMappingURL=app.css.map */
