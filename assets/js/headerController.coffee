@@ -1,7 +1,7 @@
 angular
 .module 'headerController', ['ngMaterial', 'WPAPI']
-.controller 'HeaderCtrl', ['$scope', '$rootScope', '$mdSidenav', '$mdMenu', 'UserService', 'MenuService',
-  ($scope, $rootScope, $mdSidenav, $mdMenu, UserService, MenuService)->
+.controller 'HeaderCtrl', ['$scope', '$rootScope', '$mdSidenav', '$mdMenu', 'UserService', 'MenuService', 'PostService',
+  ($scope, $rootScope, $mdSidenav, $mdMenu, UserService, MenuService, PostService)->
     $scope.$mdMenu = $mdMenu
     $scope.openMenu = ($mdOpenMenu, $event)->
       $mdOpenMenu($event)
@@ -23,5 +23,6 @@ angular
         search_url = 'https://www.google.com/search?q=site%3A' + BLOG_BARE_URL + '+' + $scope.keyword
         location.href = search_url
     $scope.menu = MenuService.get()
+    $scope.recentPosts = PostService.query()
 
 ]

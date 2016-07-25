@@ -91,11 +91,8 @@ md-list.comment-list md-list-item .md-secondary {
 a {
   text-decoration: none; }
 
-#pop-comment-button {
-  transition: none; }
-
 #article-wrapper {
-  overflow: visible; }
+  padding: 0; }
 
 body {
   overflow-y: hidden; }
@@ -112,5 +109,11 @@ md-bottom-sheet.comment-popup form md-icon {
 
 #main > md-toolbar {
   z-index: 100; }
+
+md-list.md-dense md-list-item.md-2-line, md-list.md-dense, md-list-item.md-2-line > .md-no-style {
+  min-height: 48px; }
+
+#right-sidebar md-card {
+  padding: 0; }
 
 /*# sourceMappingURL=app.css.map */

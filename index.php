@@ -122,7 +122,27 @@
 		</div>
 	</md-toolbar>
 	<md-content>
-		<div ng-view layout-padding flex></div>
+		<md-content layout="row">
+			<div ng-view layout-padding flex></div>
+			<md-divider></md-divider>
+			<md-content id="right-sidebar"layout-padding>
+				<md-card>
+					<md-card-title>
+						<md-card-title-text>
+							<span class="md-headline">Recent Posts</span>
+						</md-card-title-text>
+					</md-card-title>
+					<md-list class="md-dense">
+						<md-list-item class="md-2-line" ng-repeat="recentPost in recentPosts" ng-href="{{recentPost.link}}">
+							<div class="md-list-item-text">
+								<h3 ng-bind-html="recentPost.title.rendered"></h3>
+								<p>{{recentPost.modified}}</p>
+							</div>
+						</md-list-item>
+					</md-list>
+				</md-card>
+			</md-content>
+		</md-content>
 		<md-content class='footer' md-theme="footer-dark" layout="row" layout-wrap>
 			<md-button ng-href="http://creativecommons.org/licenses/by-sa/4.0/">
 				All contents without explicit declaration are licensed under CC-SA-4.0 License

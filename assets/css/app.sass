@@ -94,11 +94,8 @@ md-list.comment-list md-list-item .md-secondary
 a
   text-decoration: none
 
-#pop-comment-button
-  transition: none
-
 #article-wrapper
-  overflow: visible
+  padding: 0
 
 // hide body scroll bar when bottom sheet shown
 body
@@ -121,3 +118,10 @@ md-bottom-sheet.comment-popup
 
 #main > md-toolbar
   z-index: 100
+
+
+md-list.md-dense md-list-item.md-2-line, md-list.md-dense, md-list-item.md-2-line > .md-no-style
+  min-height: 48px
+
+#right-sidebar md-card
+  padding: 0
