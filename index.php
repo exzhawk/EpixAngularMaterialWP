@@ -126,7 +126,7 @@
 			<div ng-view layout-padding flex></div>
 			<md-divider></md-divider>
 			<md-content id="right-sidebar" layout-padding>
-				<md-card>
+				<md-card id="recent-post-widget">
 					<md-card-title>
 						<md-card-title-text>
 							<span class="md-headline">Recent Posts</span>
