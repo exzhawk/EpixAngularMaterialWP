@@ -1,5 +1,5 @@
 angular
-.module 'EpixAngularMaterialWPApp', ['ngMaterial', 'ngRoute', 'ngMessages', 'headerController', 'indexController',
+.module 'EpixAngularMaterialWPApp', ['ngMaterial', 'ngRoute','ngAnimate','ngMessages', 'headerController', 'indexController',
   'postController']
 .config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider)->
   $routeProvider

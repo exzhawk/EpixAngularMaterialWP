@@ -9,6 +9,7 @@ angular.module('postController', ['ngMaterial', 'WPAPI', 'ngSanitize', 'ngMessag
       content: '',
       parent: 0
     };
+    $scope.replyTo = 'Post';
     $scope.post = PostService.slug({
       slug: $routeParams.slug
     }, function() {
@@ -21,11 +22,27 @@ angular.module('postController', ['ngMaterial', 'WPAPI', 'ngSanitize', 'ngMessag
       slug: $routeParams.slug
     });
     $scope.post_comment = function() {
-      console.log($scope.reply);
-      return CommentService.save($scope.reply);
+      return CommentService.save($scope.reply).$promise.then(function() {
+        console.log(233);
+        $scope.comments = CommentSlugService.query({
+          slug: $routeParams.slug
+        });
+        $scope.hideBottomSheet();
+        return $scope.reply.content = '';
+      });
     };
     $scope.hideBottomSheet = function() {
       return $mdBottomSheet.hide();
+    };
+    $scope.replyToComment = function(commentId, commentName) {
+      $scope.replyTo = commentName;
+      $scope.reply.parent = commentId;
+      return $scope.popComment();
+    };
+    $scope.replyToPost = function() {
+      $scope.replyTo = 'Post';
+      $scope.reply.parent = 0;
+      return $scope.popComment();
     };
     $scope.popComment = function() {
       return $mdBottomSheet.show({

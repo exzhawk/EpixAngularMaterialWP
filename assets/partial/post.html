@@ -55,7 +55,7 @@
                     <h4 ng-bind="comment.date"></h4>
                     <p ng-bind-html="comment.content.rendered"></p>
                 </div>
-                <md-button class="md-secondary">
+                <md-button class="md-secondary" ng-click="replyToComment(comment.id,comment.author_name)">
                     <md-icon>reply</md-icon>
                     reply
                 </md-button>

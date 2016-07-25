@@ -91,8 +91,7 @@ angular.module('WPAPI', ['ngResource']).factory('PostService', [
     }, {
       query: {
         method: 'GET',
-        isArray: true,
-        cache: true
+        isArray: true
       }
     });
   }

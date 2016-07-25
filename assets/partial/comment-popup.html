@@ -3,7 +3,7 @@
                  md: commentCtrl.parent.$mdMedia('md'), lg: commentCtrl.parent.$mdMedia('lg')}">
     <div class=" md-toolbar-tools" layout="row">
         <md-subheader>
-            Leave a reply
+            Reply to {{commentCtrl.parent.replyTo}}
         </md-subheader>
         <span flex></span>
         <md-button ng-click="commentCtrl.parent.hideBottomSheet()">
@@ -22,10 +22,11 @@
         <md-input-container>
             <label>Email</label>
             <md-icon>email</md-icon>
-            <input ng-model="commentCtrl.parent.reply.author_email" name="email" type="email" required>
+            <input ng-model="commentCtrl.parent.reply.author_email" name="email" type="email" ng-pattern="/^.+@.+\..+$/"
+                   required>
             <div ng-messages="reply_form.email.$error">
                 <div ng-message="required">This is required</div>
-                <div ng-message="email">This is not an email</div>
+                <div ng-message="pattern">This is not an email</div>
             </div>
         </md-input-container>
         <md-input-container>
@@ -41,7 +42,6 @@
                 <div ng-message="required">This is required</div>
             </div>
         </md-input-container>
-        <md-button ng-click="commentCtrl.parent.post_comment()">submit</md-button>
-        <!--<md-button ng-disabled="reply_form.$invalid" ng-click="post_comment()">submit</md-button>-->
+        <md-button ng-disabled="reply_form.$invalid" ng-click="commentCtrl.parent.post_comment()">submit</md-button>
     </form>
 </md-bottom-sheet>

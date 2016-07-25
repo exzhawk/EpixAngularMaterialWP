@@ -9,17 +9,32 @@ angular
       author_url: ''
       content: ''
       parent: 0
+    $scope.replyTo = 'Post'
     $scope.post = PostService.slug {slug: $routeParams.slug}, -> $scope.reply.post = $scope.post.id
     $scope.cats = CategoryService.queryObject()
     $scope.tags = TagService.queryObject()
     $scope.$mdMedia = $mdMedia
     $scope.comments = CommentSlugService.query {slug: $routeParams.slug}
     $scope.post_comment = ->
-      console.log $scope.reply
       CommentService.save $scope.reply
+      .$promise.then ->
+        console.log(233)
+        $scope.comments = CommentSlugService.query {slug: $routeParams.slug}
+        $scope.hideBottomSheet()
+        $scope.reply.content = ''
 
     $scope.hideBottomSheet = ->
       $mdBottomSheet.hide()
+
+    $scope.replyToComment = (commentId, commentName)->
+      $scope.replyTo = commentName
+      $scope.reply.parent = commentId
+      $scope.popComment()
+
+    $scope.replyToPost = ->
+      $scope.replyTo = 'Post'
+      $scope.reply.parent = 0
+      $scope.popComment()
 
     $scope.popComment = ->
       $mdBottomSheet.show

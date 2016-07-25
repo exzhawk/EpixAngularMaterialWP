@@ -68,7 +68,7 @@ angular
     query:
       method: 'GET'
       isArray: true
-      cache: true
+#      cache: true
 ]
 .factory 'UserService', ['$resource', ($resource)->
   $resource 'wp-json/wp/v2/users/:userId',
