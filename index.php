@@ -122,11 +122,10 @@
 		</div>
 	</md-toolbar>
 	<md-content>
-		<md-content layout="row">
+		<md-content layout="column" layout-gt-md="row">
 			<div ng-view layout-padding flex></div>
-			<md-divider></md-divider>
 			<md-content id="right-sidebar" layout-padding>
-				<md-card id="recent-post-widget">
+				<md-card id="recent-post-widget" class="right-sidebar-widget">
 					<md-card-title>
 						<md-card-title-text>
 							<span class="md-headline">Recent Posts</span>

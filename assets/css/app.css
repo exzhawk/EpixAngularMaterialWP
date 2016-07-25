@@ -116,7 +116,7 @@ md-list.md-dense md-list-item.md-2-line, md-list.md-dense, md-list-item.md-2-lin
 #right-sidebar md-card {
   padding: 0; }
 
-#right-sidebar {
+.right-sidebar-widget {
   width: 360px; }
 
 /*# sourceMappingURL=app.css.map */
