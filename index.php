@@ -125,7 +125,7 @@
 		<md-content layout="row">
 			<div ng-view layout-padding flex></div>
 			<md-divider></md-divider>
-			<md-content id="right-sidebar"layout-padding>
+			<md-content id="right-sidebar" layout-padding>
 				<md-card>
 					<md-card-title>
 						<md-card-title-text>
