@@ -62,6 +62,10 @@ angular.module('postController', ['ngMaterial', 'WPAPI', 'ngSanitize', 'ngMessag
     buttonHtml = '<md-button class="md-fab md-fab-bottom-right" id="pop-comment-button" ng-click="popComment()">\n  <md-icon>comment</md-icon>\n</md-button>';
     buttonElement = $compile(buttonHtml)($scope);
     angular.element(document).find('body').append(buttonElement);
+    $scope.$on('$destroy', function() {
+      angular.element(document.querySelector('#pop-comment-button')).remove();
+      return angular.element(document.querySelector('.comment-popup')).remove();
+    });
   }
 ]);
 

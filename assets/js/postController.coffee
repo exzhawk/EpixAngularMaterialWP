@@ -56,5 +56,8 @@ angular
     '''
     buttonElement = $compile(buttonHtml)($scope)
     angular.element(document).find('body').append(buttonElement)
+    $scope.$on '$destroy', ->
+      angular.element(document.querySelector('#pop-comment-button')).remove()
+      angular.element(document.querySelector('.comment-popup')).remove()
     return
 ]
