@@ -38,3 +38,5 @@ No paging yet
 Header/Footer not editable
 
 Save comment form name and email for next time use
+
+No widget
