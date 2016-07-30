@@ -4,6 +4,12 @@ angular.module('EpixAngularMaterialWPApp', ['ngMaterial', 'ngRoute', 'ngAnimate'
     $routeProvider.when('/', {
       templateUrl: 'assets/partial/index.html',
       controller: 'IndexCtrl'
+    }).when('/post/tag/:slug', {
+      templateUrl: 'assets/partial/index.html',
+      controller: 'IndexCtrl'
+    }).when('/post/category/:slug', {
+      templateUrl: 'assets/partial/index.html',
+      controller: 'IndexCtrl'
     }).when('/post/:slug', {
       templateUrl: 'assets/partial/post.html',
       controller: 'PostCtrl'

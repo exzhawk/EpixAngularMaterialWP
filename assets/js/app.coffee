@@ -1,9 +1,16 @@
 angular
-.module 'EpixAngularMaterialWPApp', ['ngMaterial', 'ngRoute','ngAnimate','ngMessages', 'headerController', 'indexController',
+.module 'EpixAngularMaterialWPApp', ['ngMaterial', 'ngRoute', 'ngAnimate', 'ngMessages', 'headerController',
+  'indexController',
   'postController']
 .config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider)->
   $routeProvider
   .when '/',
+    templateUrl: 'assets/partial/index.html'
+    controller: 'IndexCtrl'
+  .when '/post/tag/:slug',
+    templateUrl: 'assets/partial/index.html'
+    controller: 'IndexCtrl'
+  .when '/post/category/:slug',
     templateUrl: 'assets/partial/index.html'
     controller: 'IndexCtrl'
   .when '/post/:slug',

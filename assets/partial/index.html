@@ -30,23 +30,33 @@
                     <md-icon>label</md-icon>
                     {{cats[post.categories[0]].name}}
                 </md-button>
-                <md-button>
+                <md-button ng-href="{{post.link}}">
                     <md-icon>update</md-icon>
                     {{post.modified}}
                 </md-button>
                 <span flex></span>
                 <md-button ng-href="{{post.link}}">
                     Continue Reading
+                    <md-icon>expand_more</md-icon>
                 </md-button>
             </md-card-actions>
         </div>
     </md-card>
-    <section layout="row">
-        <md-button class="md-raised" flex ng-click="goNewer()">
-            newer
+    <section layout="row" ng-if="totalPage!=undefined" class="paging">
+        <md-button flex ng-href="{{pageLink.first}}" ng-disabled="currentPage==1">
+            <md-icon>first_page</md-icon>
         </md-button>
-        <md-button class="md-raised" flex ng-click="goOlder()">
-            older
+        <md-button flex ng-href="{{pageLink.prev}}" ng-disabled="currentPage==1">
+            <md-icon>chevron_left</md-icon>
+        </md-button>
+        <md-button ng-click="angular.noop" flex>
+            page {{currentPage}} of {{totalPage}}
+        </md-button>
+        <md-button flex ng-href="{{pageLink.next}}" ng-disabled="currentPage==totalPage">
+            <md-icon>chevron_right</md-icon>
+        </md-button>
+        <md-button flex ng-href="{{pageLink.last}}" ng-disabled="currentPage==totalPage">
+            <md-icon>last_page</md-icon>
         </md-button>
     </section>
 </md-content>
