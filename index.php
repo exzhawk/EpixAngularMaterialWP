@@ -6,7 +6,7 @@
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="theme-color" content="#3F51B5">
 	<base href="<?php bloginfo( 'url' ); ?>/">
-	<title>Blog ww</title>
+	<title><?php bloginfo( 'name' ); ?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo( 'name' ); ?> > Feed"
@@ -57,7 +57,7 @@
 		<md-button ng-click="$mdSidenav('left').close()">
 			<md-icon>arrow_back</md-icon>
 		</md-button>
-		<h3 flex class="sidenav-title">Epix Sphere</h3>
+		<h3 flex class="sidenav-title"><?php bloginfo( 'name' ); ?></h3>
 	</md-content>
 	<form layout-padding layout="row" ng-submit="search()">
 		<md-input-container flex>
@@ -84,7 +84,7 @@
 				<md-icon>menu</md-icon>
 			</md-button>
 			<h2>
-				<a href="./">Epix Sphere</a>
+				<a href="./"><?php bloginfo( 'name' ); ?></a>
 			</h2>
 			<span flex></span>
 			<div hide-sm hide-xs layout="row">
@@ -132,7 +132,8 @@
 						</md-card-title-text>
 					</md-card-title>
 					<md-list class="md-dense">
-						<md-list-item class="md-2-line" ng-repeat="recentPost in recentPosts" ng-href="{{recentPost.link}}">
+						<md-list-item class="md-2-line" ng-repeat="recentPost in recentPosts"
+						              ng-href="{{recentPost.link}}">
 							<div class="md-list-item-text">
 								<h3 ng-bind-html="recentPost.title.rendered"></h3>
 								<p>{{recentPost.modified}}</p>
