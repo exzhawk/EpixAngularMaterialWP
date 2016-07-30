@@ -1,25 +1,31 @@
 @import mixins
 
+//remove input underline of chips
 md-chips.md-default-theme .md-chips, md-chips .md-chips
   box-shadow: none !important
   padding-bottom: 0 !important
 
+//remove all deco of link in chips
 md-chips a
   @include link-no-deco
 
+//remove chip padding in card to make it more condense
 md-card div.md-chips-wrapper
   padding-left: 16px
   padding-right: 16px
 
+//set fixed value of fixed image
 img.w320h320
   width: 320px
   height: 320px
 
+//prevent card title eat room
 md-card md-card-title
   flex: none
   -webkit-flex: none
   -ms-flex: none
 
+//dirty way to force image radio as expected
 md-card.xs div.md-card-image-wrapper
   position: relative
   overflow: hidden
@@ -37,63 +43,88 @@ md-card.xs div.md-card-image-wrapper
     bottom: 0
     right: 0
 
+//condense list
 md-list
   padding: 0 !important
 
+//force margin on longer and higher list item in comment
 .comment-list md-list-item .md-list-item-text
   margin-top: 13.5px !important
   margin-bottom: 13.5px !important
 
+//remove all deco of link in comment author
 .comment-list .author-url
   @include link-no-deco
 
+//condense menu content
 md-menu-content
   padding: 0
 
+//force uppercase for text in menu
 md-menu-item > .md-button
   text-transform: uppercase !important
 
 .md-sidenav-left
+  //higher than main toolbar
+  z-index: 102
   md-list
+    //force uppercase for button text in left sidebar
     md-list-item p
       text-transform: uppercase !important
+    //add indent to distinguish sub menu
     md-list-item.submenu
       padding-left: 32px
+  //align icon button
   .md-button.md-icon-button
     margin: 18px 6px
+  //condense header like main toolbar
   & > md-content
     height: 56px
-  .sidenav-title
-    font-size: 20px
-    font-weight: normal
-    margin: auto
+    .sidenav-title
+      font-size: 20px
+      font-weight: normal
+      margin: auto
+
+//higher than main toolbar
+md-backdrop.md-sidenav-backdrop
+  z-index: 101
 
 // fix dislocation of input in toolbar
 md-toolbar md-input-container .md-errors-spacer
   min-height: 0
 
+//limit width of search input
 .md-toolbar-tools md-input-container
   width: 180px
 
+//add indent to distinguish sub comment
 .sub-comment
   margin-left: 80px
 
+
 .footer .md-button
+  //allow text wrap
   white-space: normal
+  //disable uppercase button text in footer
   text-transform: none !important
 
+//hide the f**king scroll bar
 body > md-content#main
   overflow: hidden
 
+//higher comment reply button to align author name and prevent comment text overlay
 md-list.comment-list md-list-item .md-secondary
   top: 33px
 
+//allow text wrap to prevent f**king horizon scrollbar
 #main
   word-break: break-word
 
+//disable all underline on links
 a
   text-decoration: none
 
+//prevent futher padding by layout-padding
 #article-wrapper
   padding: 0
 
@@ -111,24 +142,27 @@ md-bottom-sheet.comment-popup
     margin-left: auto
     margin-right: 18px
     max-width: 708px
-
+  //softer looking
   form md-icon
     color: grey
 
-
+//force toolbar higher than menu, to allow toolbar action even with menu opened
 #main > md-toolbar
   z-index: 100
 
-
+//condense recent post
 md-list.md-dense md-list-item.md-2-line, md-list.md-dense, md-list-item.md-2-line > .md-no-style
   min-height: 48px
 
+//prevent futher padding by layout-padding
 #right-sidebar md-card
   padding: 0
 
+//fixed width of right sidebar
 .right-sidebar-widget
   width: 360px
 
+//add vertical padding to footer for relaxing looking
 .footer
   padding-top: 16px
   padding-bottom: 16px
