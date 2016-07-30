@@ -54,7 +54,7 @@
 <body layout="row" layout-fill ng-cloak>
 <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
 	<md-content layout="row">
-		<md-button ng-click="$mdSidenav('left').close()">
+		<md-button ng-click="$mdSidenav('left').toggle()">
 			<md-icon>arrow_back</md-icon>
 		</md-button>
 		<h3 flex class="sidenav-title"><?php bloginfo( 'name' ); ?></h3>
@@ -80,7 +80,7 @@
 <md-content flex layout="column" id="main">
 	<md-toolbar md-scroll-shrink>
 		<div class="md-toolbar-tools">
-			<md-button ng-click="$mdSidenav('left').open()" hide-gt-sm>
+			<md-button ng-click="$mdSidenav('left').toggle()" hide-gt-sm>
 				<md-icon>menu</md-icon>
 			</md-button>
 			<h2>
