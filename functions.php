@@ -5,6 +5,36 @@
  * Date: 2016/7/14
  * Time: 15:45
  */
+
+/**
+ * nest comments by parent property
+ *
+ * @param $comments
+ *
+ * @return array
+ */
+function nest_comments( $comments ) {
+	$lookup = array();
+	foreach ( $comments as $comment ) {
+		$comment->children      = array();
+		$lookup[ $comment->id ] = $comment;
+	}
+	$result = array();
+	foreach ( $comments as $comment ) {
+		if ( $comment->parent != 0 ) {
+			$parent_comment = $lookup[ $comment->parent ];
+			array_push( $parent_comment->children, $comment );
+		} else {
+			array_push( $result, $comment );
+		}
+	}
+
+	return $result;
+}
+
+/**
+ * setup theme
+ */
 if ( ! function_exists( 'epixangularmaterialwp_setup' ) ):
 	function epixangularmaterialwp_setup() {
 		add_theme_support( 'post-thumbnails' );
@@ -34,6 +64,9 @@ if ( ! function_exists( 'epixangularmaterialwp_setup' ) ):
 endif;
 add_action( 'after_setup_theme', 'epixangularmaterialwp_setup' );
 
+/**
+ * add post_thumbnail element to a post
+ */
 if ( ! function_exists( 'reg_post_thumbnail' ) ):
 	function reg_post_thumbnail() {
 		register_rest_field( 'post',
@@ -65,6 +98,9 @@ if ( ! function_exists( 'reg_post_thumbnail' ) ):
 endif;
 add_action( 'rest_api_init', 'reg_post_thumbnail' );
 
+/**
+ * add comment_count property to a post
+ */
 if ( ! function_exists( 'reg_post_comment_count' ) ):
 	function reg_post_comment_count() {
 		register_rest_field( 'post',
@@ -87,6 +123,9 @@ if ( ! function_exists( 'reg_post_comment_count' ) ):
 endif;
 add_action( 'rest_api_init', 'reg_post_comment_count' );
 
+/**
+ * add get_comments_by_slug to access comment by post slug
+ */
 if ( ! function_exists( 'register_routes' ) ):
 	function register_routes( $routes ) {
 
@@ -112,20 +151,7 @@ if ( ! function_exists( 'register_routes' ) ):
 		$server->serve_request( '/wp/v2/comments' );
 		$comments = json_decode( ob_get_contents() );
 		ob_end_clean();
-		$lookup = array();
-		foreach ( $comments as $comment ) {
-			$comment->children      = array();
-			$lookup[ $comment->id ] = $comment;
-		}
-		$result = array();
-		foreach ( $comments as $comment ) {
-			if ( $comment->parent != 0 ) {
-				$parent_comment = $lookup[ $comment->parent ];
-				array_push( $parent_comment->children, $comment );
-			} else {
-				array_push( $result, $comment );
-			}
-		}
+		$result   = nest_comments( $comments );
 		$response = new WP_REST_Response( $result );
 
 		return $response;
@@ -134,6 +160,9 @@ if ( ! function_exists( 'register_routes' ) ):
 endif;
 add_action( 'rest_api_init', 'register_routes' );
 
+/**
+ * limit excerpt length
+ */
 if ( ! function_exists( 'custom_excerpt_length' ) ):
 	function custom_excerpt_length( $length ) {
 		return 20;
