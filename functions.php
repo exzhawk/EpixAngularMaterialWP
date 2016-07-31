@@ -65,6 +65,28 @@ if ( ! function_exists( 'reg_post_thumbnail' ) ):
 endif;
 add_action( 'rest_api_init', 'reg_post_thumbnail' );
 
+if ( ! function_exists( 'reg_post_comment_count' ) ):
+	function reg_post_comment_count() {
+		register_rest_field( 'post',
+			'comment_count',
+			array(
+				'get_callback'    => 'get_post_comment_count',
+				'update_callback' => null,
+				'schema'          => null,
+			)
+		);
+	}
+
+
+	function get_post_comment_count( $object, $field_name, $request ) {
+		$post_id       = $object['id'];
+		$comment_count = wp_count_comments( $post_id )->approved;
+
+		return $comment_count;
+	}
+endif;
+add_action( 'rest_api_init', 'reg_post_comment_count' );
+
 if ( ! function_exists( 'register_routes' ) ):
 	function register_routes( $routes ) {
 
