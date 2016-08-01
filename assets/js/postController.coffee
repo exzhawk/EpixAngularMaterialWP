@@ -1,8 +1,8 @@
 angular
 .module 'postController', ['ngMaterial', 'WPAPI', 'ngSanitize', 'ngMessages']
-.controller 'PostCtrl', ['$scope', '$compile', '$routeParams','$rootScope','$timeout', '$mdMedia', '$mdBottomSheet', 'PostService',
-  'TagService', 'CategoryService', 'CommentService', 'CommentSlugService',
-  ($scope, $compile, $routeParams,$rootScope,$timeout, $mdMedia, $mdBottomSheet, PostService, TagService, CategoryService, CommentService, CommentSlugService)->
+.controller 'PostCtrl', ['$scope', '$compile', '$routeParams', '$rootScope', '$timeout', '$mdMedia', '$mdBottomSheet',
+  'PostService',  'TagService', 'CategoryService', 'CommentService', 'CommentSlugService',
+  ($scope, $compile, $routeParams, $rootScope, $timeout, $mdMedia, $mdBottomSheet, PostService, TagService, CategoryService, CommentService, CommentSlugService)->
     $scope.reply =
       author_name: ''
       author_email: ''
@@ -29,7 +29,7 @@ angular
       loadCount -= 1
       scrollToComment()
     $rootScope.headerScope.recentPosts.$promise.then ->
-      loadCount-=1
+      loadCount -= 1
       scrollToComment()
     $scope.post_comment = ->
       CommentService.save $scope.reply
