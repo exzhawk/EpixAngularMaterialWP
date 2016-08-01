@@ -1,8 +1,8 @@
 angular
 .module 'postController', ['ngMaterial', 'WPAPI', 'ngSanitize', 'ngMessages']
-.controller 'PostCtrl', ['$scope', '$compile', '$routeParams', '$mdMedia', '$mdBottomSheet', 'PostService',
+.controller 'PostCtrl', ['$scope', '$compile', '$routeParams','$rootScope','$timeout', '$mdMedia', '$mdBottomSheet', 'PostService',
   'TagService', 'CategoryService', 'CommentService', 'CommentSlugService',
-  ($scope, $compile, $routeParams, $mdMedia, $mdBottomSheet, PostService, TagService, CategoryService, CommentService, CommentSlugService)->
+  ($scope, $compile, $routeParams,$rootScope,$timeout, $mdMedia, $mdBottomSheet, PostService, TagService, CategoryService, CommentService, CommentSlugService)->
     $scope.reply =
       author_name: ''
       author_email: ''
@@ -10,11 +10,27 @@ angular
       content: ''
       parent: 0
     $scope.replyTo = 'Post'
-    $scope.post = PostService.slug {slug: $routeParams.slug}, -> $scope.reply.post = $scope.post.id
+    loadCount = 3
+    scrollToComment = ->
+      if loadCount == 0
+        $timeout ->
+          scrollDistance = document.querySelector('#comments').offsetTop
+          scrollObject = document.querySelector('#main>md-content')
+          console.log scrollObject.scrollHeight
+          scrollObject.scrollTop = scrollDistance
+    $scope.post = PostService.slug {slug: $routeParams.slug}, ->
+      $scope.reply.post = $scope.post.id
+      loadCount -= 1
+      scrollToComment()
     $scope.cats = CategoryService.queryObject()
     $scope.tags = TagService.queryObject()
     $scope.$mdMedia = $mdMedia
-    $scope.comments = CommentSlugService.query {slug: $routeParams.slug}
+    $scope.comments = CommentSlugService.query {slug: $routeParams.slug}, ->
+      loadCount -= 1
+      scrollToComment()
+    $rootScope.headerScope.recentPosts.$promise.then ->
+      loadCount-=1
+      scrollToComment()
     $scope.post_comment = ->
       CommentService.save $scope.reply
       .$promise.then ->

@@ -2,6 +2,7 @@ angular
 .module 'headerController', ['ngMaterial', 'WPAPI']
 .controller 'HeaderCtrl', ['$scope', '$rootScope', '$mdSidenav', '$mdMenu', 'UserService', 'MenuService', 'PostService',
   ($scope, $rootScope, $mdSidenav, $mdMenu, UserService, MenuService, PostService)->
+    $rootScope.headerScope=$scope
     $scope.$mdMenu = $mdMenu
     $scope.openMenu = ($mdOpenMenu, $event)->
       $mdOpenMenu($event)

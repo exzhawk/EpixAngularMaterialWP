@@ -35,6 +35,10 @@
                         <md-icon>update</md-icon>
                         {{post.modified}}
                     </md-button>
+                    <md-button>
+                        <md-icon>comment</md-icon>
+                        {{post.comment_count}} comment
+                    </md-button>
                     <span flex></span>
                 </md-card-actions>
             </div>
@@ -42,7 +46,7 @@
         <md-card-content ng-bind-html="post.content.rendered">
         </md-card-content>
     </md-card>
-    <md-card>
+    <md-card id="comments">
         <md-list class="comment-list" flex ng-repeat="comment in comments">
             <md-list-item class="md-3-line">
                 <a ng-href="{{comment.author_url}}" target="_blank">
