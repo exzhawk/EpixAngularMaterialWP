@@ -122,7 +122,7 @@
 		</div>
 	</md-toolbar>
 	<md-content>
-		<md-content layout="column" layout-gt-md="row">
+		<md-content layout="column" layout-gt-md="row" id="container">
 			<div ng-view layout-padding flex></div>
 			<md-content id="right-sidebar" layout-padding>
 				<md-card id="recent-post-widget" class="right-sidebar-widget">
