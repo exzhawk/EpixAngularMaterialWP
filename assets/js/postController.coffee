@@ -1,12 +1,10 @@
 angular
 .module 'postController', ['ngMaterial', 'WPAPI', 'ngSanitize', 'ngMessages']
 .controller 'PostCtrl', ['$scope', '$compile', '$routeParams', '$rootScope', '$timeout', '$mdMedia', '$mdBottomSheet',
-  'PostService',  'TagService', 'CategoryService', 'CommentService', 'CommentSlugService',
+  'PostService', 'TagService', 'CategoryService', 'CommentService', 'CommentSlugService',
   ($scope, $compile, $routeParams, $rootScope, $timeout, $mdMedia, $mdBottomSheet, PostService, TagService, CategoryService, CommentService, CommentSlugService)->
     $scope.reply =
-      author_name: ''
-      author_email: ''
-      author_url: ''
+      author: 0
       content: ''
       parent: 0
     $scope.replyTo = 'Post'
@@ -16,7 +14,6 @@ angular
         $timeout ->
           scrollDistance = document.querySelector('#comments').offsetTop
           scrollObject = document.querySelector('#main>md-content')
-          console.log scrollObject.scrollHeight
           scrollObject.scrollTop = scrollDistance
     $scope.post = PostService.slug {slug: $routeParams.slug}, ->
       $scope.reply.post = $scope.post.id
@@ -34,7 +31,6 @@ angular
     $scope.post_comment = ->
       CommentService.save $scope.reply
       .$promise.then ->
-        console.log(233)
         $scope.comments = CommentSlugService.query {slug: $routeParams.slug}
         $scope.hideBottomSheet()
         $scope.reply.content = ''
@@ -75,5 +71,6 @@ angular
     $scope.$on '$destroy', ->
       angular.element(document.querySelector('#pop-comment-button')).remove()
       angular.element(document.querySelector('.comment-popup')).remove()
+    $scope.current_user = $rootScope.current_user
     return
 ]

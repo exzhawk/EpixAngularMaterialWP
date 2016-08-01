@@ -2,7 +2,7 @@ angular
 .module 'headerController', ['ngMaterial', 'WPAPI']
 .controller 'HeaderCtrl', ['$scope', '$rootScope', '$mdSidenav', '$mdMenu', 'UserService', 'MenuService', 'PostService',
   ($scope, $rootScope, $mdSidenav, $mdMenu, UserService, MenuService, PostService)->
-    $rootScope.headerScope=$scope
+    $rootScope.headerScope = $scope
     $scope.$mdMenu = $mdMenu
     $scope.openMenu = ($mdOpenMenu, $event)->
       $mdOpenMenu($event)
@@ -13,6 +13,7 @@ angular
       return
     $scope.$mdSidenav = $mdSidenav
     $scope.current_user_id = CURRENT_USER_ID
+    $rootScope.CURRENT_USER_ID = CURRENT_USER_ID
     if CURRENT_USER_ID == "0"
       $rootScope.current_user = null
     else

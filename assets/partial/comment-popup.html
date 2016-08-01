@@ -11,7 +11,7 @@
         </md-button>
     </div>
     <form name="reply_form">
-        <md-input-container>
+        <md-input-container ng-if="!commentCtrl.parent.current_user">
             <label>Name</label>
             <md-icon>person</md-icon>
             <input ng-model="commentCtrl.parent.reply.author_name" name="name" required>
@@ -19,7 +19,7 @@
                 <div ng-message="required">This is required</div>
             </div>
         </md-input-container>
-        <md-input-container>
+        <md-input-container ng-if="!commentCtrl.parent.current_user">
             <label>Email</label>
             <md-icon>email</md-icon>
             <input ng-model="commentCtrl.parent.reply.author_email" name="email" type="email" ng-pattern="/^.+@.+\..+$/"
@@ -29,11 +29,15 @@
                 <div ng-message="pattern">This is not an email</div>
             </div>
         </md-input-container>
-        <md-input-container>
-            <label>Web Link</label>
+        <md-input-container ng-if="!commentCtrl.parent.current_user">
+            <label>URL</label>
             <md-icon>link</md-icon>
-            <input ng-model="commentCtrl.parent.reply.author_url" name="website">
+            <input ng-model="commentCtrl.parent.reply.author_url" name="url">
         </md-input-container>
+        <section class="reply-user" ng-if="commentCtrl.parent.current_user" layout="row" ng-init="">
+            <img ng-src="{{commentCtrl.parent.current_user.avatar_urls['48']}}" class="reply-avatar">
+            Comment as &nbsp;<strong>{{commentCtrl.parent.current_user.name}}</strong>
+        </section>
         <md-input-container class="md-block">
             <label>Content</label>
             <md-icon>subject</md-icon>
