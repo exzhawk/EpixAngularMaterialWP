@@ -1,33 +1,35 @@
 angular
 .module 'postController', ['ngMaterial', 'WPAPI', 'ngSanitize', 'ngMessages']
-.controller 'PostCtrl', ['$scope', '$compile', '$routeParams', '$rootScope', '$timeout', '$mdMedia', '$mdBottomSheet',
+.controller 'PostCtrl', ['$scope', '$compile', '$routeParams', '$rootScope', '$timeout','$location', '$mdMedia', '$mdBottomSheet',
   'PostService', 'TagService', 'CategoryService', 'CommentService', 'CommentSlugService',
-  ($scope, $compile, $routeParams, $rootScope, $timeout, $mdMedia, $mdBottomSheet, PostService, TagService, CategoryService, CommentService, CommentSlugService)->
+  ($scope, $compile, $routeParams, $rootScope, $timeout,$location, $mdMedia, $mdBottomSheet, PostService, TagService, CategoryService, CommentService, CommentSlugService)->
     $scope.reply =
       author: 0
       content: ''
       parent: 0
     $scope.replyTo = 'Post'
     loadCount = 3
-    scrollToComment = ->
+    scrollToAnchor = ->
       if loadCount == 0
         $timeout ->
-          scrollDistance = document.querySelector('#comments').offsetTop
-          scrollObject = document.querySelector('#main>md-content')
-          scrollObject.scrollTop = scrollDistance
+          anchor=$location.hash()
+          if anchor
+            scrollDistance = document.querySelector('#'+anchor).offsetTop
+            scrollObject = document.querySelector('#main>md-content')
+            scrollObject.scrollTop = scrollDistance
     $scope.post = PostService.slug {slug: $routeParams.slug}, ->
       $scope.reply.post = $scope.post.id
       loadCount -= 1
-      scrollToComment()
+      scrollToAnchor()
     $scope.cats = CategoryService.queryObject()
     $scope.tags = TagService.queryObject()
     $scope.$mdMedia = $mdMedia
     $scope.comments = CommentSlugService.query {slug: $routeParams.slug}, ->
       loadCount -= 1
-      scrollToComment()
+      scrollToAnchor()
     $rootScope.headerScope.recentPosts.$promise.then ->
       loadCount -= 1
-      scrollToComment()
+      scrollToAnchor()
     $scope.post_comment = ->
       CommentService.save $scope.reply
       .$promise.then ->
