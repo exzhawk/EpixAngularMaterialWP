@@ -163,10 +163,10 @@ add_action( 'rest_api_init', 'register_routes' );
 /**
  * add support for gallery shortcode
  */
-if ( ! function_exists( 'epix_galllery_shortcode' ) ):
+if ( ! function_exists( 'epix_gallery_shortcode' ) ):
 	remove_shortcode( 'gallery' );
-	add_shortcode( 'gallery', 'epix_galllery_shortcode' );
-	function epix_galllery_shortcode( $attr ) {
+	add_shortcode( 'gallery', 'epix_gallery_shortcode' );
+	function epix_gallery_shortcode( $attr ) {
 		$images = get_posts( array(
 			'include'        => $attr['id'],
 			'order'          => 'post__in',
@@ -181,7 +181,7 @@ if ( ! function_exists( 'epix_galllery_shortcode' ) ):
 			$thumbnail_image_url = wp_get_attachment_image_url( $image->ID, 'thumbnail' );
 			$full_image_url      = wp_get_attachment_image_url( $image->ID, 'full' );
 			$img_output          = '<md-grid-tile  md-rowspan="1" md-colspan="1" 
-							ng-click="openGalleryDialog(\''.$image->post_title.'\', \''.$full_image_url.'\', $event)">
+							ng-click="openGalleryDialog(\'' . $image->post_title . '\', \'' . $full_image_url . '\', $event)">
 							<img src="' . $thumbnail_image_url . '">
 							<md-grid-tile-footer>
 							<h3>' . $image->post_title . '</h3>
@@ -211,15 +211,15 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 /**
  * allow other types upload to media library
  */
-if(!function_exists('enable_extended_upload')):
-function enable_extended_upload ( $mime_types =array() ) {
+if ( ! function_exists( 'enable_extended_upload' ) ):
+	function enable_extended_upload( $mime_types = array() ) {
 
 // The MIME types listed here will be allowed in the media library.
 // You can add as many MIME types as you want.
 //$mime_types['zip'] = 'application/zip';
-	$mime_types['json'] = 'application/json';
+		$mime_types['json'] = 'application/json';
 
-	return $mime_types;
-}
+		return $mime_types;
+	}
 endif;
-add_filter('upload_mimes', 'enable_extended_upload');
+add_filter( 'upload_mimes', 'enable_extended_upload' );
