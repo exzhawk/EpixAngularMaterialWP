@@ -207,3 +207,19 @@ if ( ! function_exists( 'custom_excerpt_length' ) ):
 	}
 endif;
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+/**
+ * allow other types upload to media library
+ */
+if(!function_exists('enable_extended_upload')):
+function enable_extended_upload ( $mime_types =array() ) {
+
+// The MIME types listed here will be allowed in the media library.
+// You can add as many MIME types as you want.
+//$mime_types['zip'] = 'application/zip';
+	$mime_types['json'] = 'application/json';
+
+	return $mime_types;
+}
+endif;
+add_filter('upload_mimes', 'enable_extended_upload');
