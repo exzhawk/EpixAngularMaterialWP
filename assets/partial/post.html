@@ -43,7 +43,7 @@
                 </md-card-actions>
             </div>
         </div>
-        <md-card-content ng-bind-html="post.content.rendered" id="post">
+        <md-card-content id="post" compile="post.content.rendered">
         </md-card-content>
     </md-card>
     <md-card id="comments">

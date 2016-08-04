@@ -44,3 +44,14 @@ angular
 .run ($rootScope)->
   $rootScope.$on '$routeChangeSuccess', ->
     document.querySelector('#main > md-content').scrollTop = 0
+.directive 'compile', ['$compile', ($compile)->
+  (scope, element, attrs)->
+    scope.$watch (scope)->
+      scope.$eval attrs.compile
+    ,
+      (value)->
+        element.html(value)
+        $compile(element.contents())(scope)
+        return
+    return
+]

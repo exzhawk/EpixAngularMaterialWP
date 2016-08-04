@@ -1,8 +1,8 @@
 angular
 .module 'postController', ['ngMaterial', 'WPAPI', 'ngSanitize', 'ngMessages']
-.controller 'PostCtrl', ['$scope', '$compile', '$routeParams', '$rootScope', '$timeout','$location', '$mdMedia', '$mdBottomSheet',
-  'PostService', 'TagService', 'CategoryService', 'CommentService', 'CommentSlugService',
-  ($scope, $compile, $routeParams, $rootScope, $timeout,$location, $mdMedia, $mdBottomSheet, PostService, TagService, CategoryService, CommentService, CommentSlugService)->
+.controller 'PostCtrl', ['$scope', '$compile', '$routeParams', '$rootScope', '$timeout', '$location', '$mdMedia',
+  '$mdBottomSheet', '$mdDialog', 'PostService', 'TagService', 'CategoryService', 'CommentService', 'CommentSlugService',
+  ($scope, $compile, $routeParams, $rootScope, $timeout, $location, $mdMedia, $mdBottomSheet, $mdDialog, PostService, TagService, CategoryService, CommentService, CommentSlugService)->
     $scope.reply =
       author: 0
       content: ''
@@ -12,9 +12,9 @@ angular
     scrollToAnchor = ->
       if loadCount == 0
         $timeout ->
-          anchor=$location.hash()
+          anchor = $location.hash()
           if anchor
-            scrollDistance = document.querySelector('#'+anchor).offsetTop
+            scrollDistance = document.querySelector('#' + anchor).offsetTop
             scrollObject = document.querySelector('#main>md-content')
             scrollObject.scrollTop = scrollDistance
     $scope.post = PostService.slug {slug: $routeParams.slug}, ->
@@ -74,5 +74,32 @@ angular
       angular.element(document.querySelector('#pop-comment-button')).remove()
       angular.element(document.querySelector('.comment-popup')).remove()
     $scope.current_user = $rootScope.current_user
+
+    $scope.openGalleryDialog = (title, fullUrl, ev)->
+      $mdDialog.show
+        template: '<md-dialog class="gallery-dialog" ng-click="closeGalleryDialog()" layout="column">
+                    <md-toolbar>
+                      <div class="md-toolbar-tools">
+                        <h2>' + title + '</h2>
+                        <span flex> </span>
+                        <md-button ng-click="closeGalleryDialog()">
+                          <md-icon>cancel</md-icon>
+                        </md-button>
+                      </div>
+                    </md-toolbar>
+                    <md-dialog-content layout="row">
+                      <img src="' + fullUrl + '">
+                    </md-dialog-content>
+                  </md-dialog>'
+        targetEvent: ev
+        clickOutsideToClose: true
+        controller: ($scope, $mdDialog)->
+          $scope.closeGalleryDialog = ->
+            $mdDialog.hide()
+
+    $scope.closeGalleryDialog = ->
+      console.log 233
+      $mdDialog.hide()
+
     return
 ]

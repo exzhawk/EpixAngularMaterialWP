@@ -161,6 +161,44 @@ endif;
 add_action( 'rest_api_init', 'register_routes' );
 
 /**
+ * add support for gallery shortcode
+ */
+if ( ! function_exists( 'epix_galllery_shortcode' ) ):
+	remove_shortcode( 'gallery' );
+	add_shortcode( 'gallery', 'epix_galllery_shortcode' );
+	function epix_galllery_shortcode( $attr ) {
+		$images = get_posts( array(
+			'include'        => $attr['id'],
+			'order'          => 'post__in',
+			'post_status'    => 'public',
+			'post_type'      => 'attachment',
+			'post_mime_type' => 'image',
+
+		) );
+		$output = '  <md-grid-list md-cols-xs="2" md-cols-sm="3" md-cols-md="6" md-cols-lg="6" md-cols-gt-lg="10"
+				   md-row-height="1:1" md-gutter="12px" md-gutter-gt-sm="8px" class="gallery">';
+		foreach ( $images as $image ) {
+			$thumbnail_image_url = wp_get_attachment_image_url( $image->ID, 'thumbnail' );
+			$full_image_url      = wp_get_attachment_image_url( $image->ID, 'full' );
+			$img_output          = '<md-grid-tile  md-rowspan="1" md-colspan="1" 
+							ng-click="openGalleryDialog(\''.$image->post_title.'\', \''.$full_image_url.'\', $event)">
+							<img src="' . $thumbnail_image_url . '">
+							<md-grid-tile-footer>
+							<h3>' . $image->post_title . '</h3>
+							</md-grid-tile-footer>
+							</md-grid-tile>';
+			$output .= $img_output;
+
+		}
+
+		$output .= '</md-grid-list>';
+
+		return $output;
+	}
+endif;
+
+
+/**
  * limit excerpt length
  */
 if ( ! function_exists( 'custom_excerpt_length' ) ):

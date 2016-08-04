@@ -101,7 +101,6 @@ md-toolbar md-input-container .md-errors-spacer
 .sub-comment
   margin-left: 80px
 
-
 .footer .md-button
   //allow text wrap
   white-space: normal
@@ -186,3 +185,32 @@ md-list.md-dense md-list-item.md-2-line, md-list.md-dense, md-list-item.md-2-lin
 #post img
   max-width: 100%
   height: auto
+
+//fit gallery thumbnail
+#article-wrapper .gallery img
+  width: 100%
+
+//make dialog above toolbar
+md-backdrop.md-dialog-backdrop
+  z-index: 101
+
+.md-scroll-mask
+  z-index: 102
+
+.md-dialog-container
+  z-index: 103
+
+//limit size of image in gallery dialog
+md-dialog.gallery-dialog
+  height: 80%
+  width: 80%
+  md-dialog-content
+    height: calc(100% - 64px)
+    width: 100%
+    overflow: hidden
+    align-items: center
+    justify-content: center
+    img
+      max-height: 100%
+      max-width: 100%
+      margin: auto
