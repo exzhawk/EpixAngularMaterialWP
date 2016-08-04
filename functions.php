@@ -39,23 +39,6 @@ if ( ! function_exists( 'epixangularmaterialwp_setup' ) ):
 	function epixangularmaterialwp_setup() {
 		add_theme_support( 'post-thumbnails' );
 		add_image_size( 'w320h320', 320, 320, true );
-		add_theme_support( 'html5', array(
-			'search-form',
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
-		) );
-		add_theme_support( 'post-formats', array(
-			'aside',
-			'image',
-			'video',
-			'audio',
-			'quote',
-			'status',
-			'gallery',
-			'link'
-		) );
 		register_nav_menus( array(
 			'primary' => 'Primary'
 		) );
