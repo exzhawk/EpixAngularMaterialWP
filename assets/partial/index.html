@@ -53,9 +53,15 @@
         <md-button flex ng-href="{{pageLink.prev}}" ng-disabled="currentPage==1">
             <md-icon>chevron_left</md-icon>
         </md-button>
-        <md-button ng-click="angular.noop" flex>
-            page {{currentPage}} of {{totalPage}}
-        </md-button>
+        <form flex id="page-selector">
+        <md-input-container class="md-block" >
+            <md-select ng-model="currentPageSelect">
+                <md-option ng-repeat="page in pages" value="{{page}}" ng-click="jumpToPage(page)">
+                    PAGE {{page}} OF {{totalPage}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        </form>
         <md-button flex ng-href="{{pageLink.next}}" ng-disabled="currentPage==totalPage">
             <md-icon>chevron_right</md-icon>
         </md-button>

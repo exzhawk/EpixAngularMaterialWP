@@ -6,6 +6,7 @@ angular
   ($scope, $mdMedia, $routeParams, $location, $httpParamSerializer, $rootScope, PostService, TagService, CategoryService)->
     getTotalpages = (data, header)->
       $scope.totalPage = header()['x-wp-totalpages']
+      $scope.pages = [1..$scope.totalPage]
       getPageLink()
     getPageLink = ->
       params = $location.search()
@@ -23,8 +24,13 @@ angular
         prev: ['.', path, '?', $httpParamSerializer(prev_params)].join('')
         next: ['.', path, '?', $httpParamSerializer(next_params)].join('')
         last: ['.', path, '?', $httpParamSerializer(last_params)].join('')
+    $scope.jumpToPage = (page)->
+      if page != $scope.currentPage
+        $location.search 'page', page
+        return
     refreshView = ->
       $scope.currentPage = if $routeParams.page then parseInt($routeParams.page) else 1
+      $scope.currentPageSelect = $scope.currentPage
       tax = $location.path()[0..8]
       switch tax
         when '/'

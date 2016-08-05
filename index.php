@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet"
 	      href="<?php echo get_template_directory_uri(); ?>/bower_components/angular-material/angular-material.css">
-	<script src="<?php echo get_template_directory_uri(); ?>/bower_components/jquery/dist/jquery.min.js"
+	<script src="<?php echo get_template_directory_uri(); ?>/bower_components/jquery/dist/jquery.js"
 	        type="text/javascript" defer></script>
 	<script src="<?php echo get_template_directory_uri(); ?>/bower_components/angular/angular.js"
 	        type="text/javascript" defer></script>
