@@ -40,3 +40,8 @@ Save comment form name and email for next time use
 Widget not configurable
 
 No localization
+
+##Special thanks
+https://github.com/scottcorgan/angular-gist
+
+for teach me embed gist in angular js template

@@ -55,3 +55,33 @@ angular
         return
     return
 ]
+.directive 'gist', ['$timeout', ($timeout)->
+  restrict: 'E',
+  replace: true,
+  template: '<div class="gist"></div>',
+  link: (scope, element, attrs)->
+    $timeout ->
+      gistId = attrs.id
+      iframe = document.createElement('iframe')
+      iframe.setAttribute('width', '100%');
+      iframe.setAttribute('frameborder', '0');
+      iframe.id = 'gist-' + gistId
+      element[0].appendChild(iframe)
+      iframeHtml = '<html><head><base target="_parent"></head>
+                    <body onload="parent.document.getElementById(\'' + iframe.id + '\').style.height=document.body.scrollHeight + \'px\'">
+                    <script type="text/javascript">
+                      window.retargetLinks=function(){
+                        var as=document.querySelectorAll("a");
+                        var asl=as.length;
+                        for (var i=0;i<asl;i++){as[i].setAttribute("target","_blank")}
+                      }
+                    </script>
+                    <script type="text/javascript" src="https://gist.github.com/' + gistId + '.js" onload="retargetLinks()"></script>
+                    </body></html>'
+      doc = iframe.document || iframe.contentDocument || iframe.contentWindow
+      doc.open()
+      doc.writeln iframeHtml
+      doc.close()
+    ,
+      0
+]
