@@ -3,6 +3,7 @@ angular
 .controller 'PostCtrl', ['$scope', '$compile', '$routeParams', '$rootScope', '$timeout', '$location', '$mdMedia',
   '$mdBottomSheet', '$mdDialog', 'PostService', 'TagService', 'CategoryService', 'CommentService', 'CommentSlugService',
   ($scope, $compile, $routeParams, $rootScope, $timeout, $location, $mdMedia, $mdBottomSheet, $mdDialog, PostService, TagService, CategoryService, CommentService, CommentSlugService)->
+    $scope.current_user_id = $rootScope.CURRENT_USER_ID
     $scope.reply =
       author: 0
       content: ''
@@ -96,10 +97,6 @@ angular
         controller: ($scope, $mdDialog)->
           $scope.closeGalleryDialog = ->
             $mdDialog.hide()
-
-    $scope.closeGalleryDialog = ->
-      console.log 233
-      $mdDialog.hide()
 
     return
 ]

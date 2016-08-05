@@ -10,6 +10,10 @@
                     <md-card-title-text>
                         <span class="md-headline" ng-bind-html="post.title.rendered"></span>
                     </md-card-title-text>
+                    <md-button class="md-icon-button" ng-if="current_user_id!='0'"
+                               ng-href="./wp-admin/post.php?post={{post.id}}&action=edit" target="_blank">
+                        <md-icon>edit</md-icon>
+                    </md-button>
                 </md-card-title>
                 <div class="md-chips-wrapper">
                     <md-chips ng-model="post.tags" readonly="true">

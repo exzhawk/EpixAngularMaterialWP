@@ -1,8 +1,9 @@
 angular
 .module 'indexController', ['ngMaterial', 'WPAPI', 'ngSanitize']
-.controller 'IndexCtrl', ['$scope', '$mdMedia', '$routeParams', '$location', '$httpParamSerializer', 'PostService',
+.controller 'IndexCtrl', ['$scope', '$mdMedia', '$routeParams', '$location', '$httpParamSerializer', '$rootScope',
+  'PostService',
   'TagService', 'CategoryService',
-  ($scope, $mdMedia, $routeParams, $location, $httpParamSerializer, PostService, TagService, CategoryService)->
+  ($scope, $mdMedia, $routeParams, $location, $httpParamSerializer, $rootScope, PostService, TagService, CategoryService)->
     getTotalpages = (data, header)->
       $scope.totalPage = header()['x-wp-totalpages']
       getPageLink()
@@ -31,14 +32,15 @@ angular
         when '/post/tag'
           $scope.posts = PostService.query params, getTotalpages
         when '/post/cat'
-          params= JSON.parse('{"page": "'+$scope.currentPage+'", "filter\[category_name\]": "'+$routeParams.slug+'"}')
+          params = JSON.parse('{"page": "' + $scope.currentPage + '", "filter\[category_name\]": "' + $routeParams.slug + '"}')
           $scope.posts = PostService.query params, getTotalpages
     refreshView()
 
     $scope.cats = CategoryService.queryObject()
     $scope.tags = TagService.queryObject()
     $scope.$mdMedia = $mdMedia;
-    #    $routeParams
+
+    $scope.current_user_id = $rootScope.CURRENT_USER_ID
 
     return
 ]
