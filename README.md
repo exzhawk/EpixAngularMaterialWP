@@ -29,6 +29,8 @@ Max number of tags/categories/comments are limited to 100
 
 Page title not editable
 
+No current page indicator
+
 Too many internal call for rest api
 
 CSS not organized
