@@ -34,7 +34,12 @@ angular
       tax = $location.path()[0..8]
       switch tax
         when '/'
-          $scope.posts = PostService.query {page: $scope.currentPage}, getTotalpages
+          params = {page: $scope.currentPage}
+          if $routeParams.before
+            params['before'] = $routeParams.before
+          if $routeParams.after
+            params['after'] = $routeParams.after
+          $scope.posts = PostService.query params, getTotalpages
         when '/post/tag'
           $scope.posts = PostService.query params, getTotalpages
         when '/post/cat'

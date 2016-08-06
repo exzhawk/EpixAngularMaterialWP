@@ -85,3 +85,10 @@ angular
     ,
       0
 ]
+.config ['$mdDateLocaleProvider', ($mdDateLocaleProvider)->
+  $mdDateLocaleProvider.formatDate = (date)->
+    return if date then date.toISOString().slice(0, 10) else null
+  $mdDateLocaleProvider.parseDate = (dateString) ->
+    return if Date.parse(dateString) then new Date(dateString) else new Date(NaN)
+  return
+]

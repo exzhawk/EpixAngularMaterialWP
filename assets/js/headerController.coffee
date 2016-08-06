@@ -1,7 +1,9 @@
 angular
 .module 'headerController', ['ngMaterial', 'WPAPI']
-.controller 'HeaderCtrl', ['$scope', '$rootScope', '$mdSidenav', '$mdMenu', 'UserService', 'MenuService', 'PostService',
-  ($scope, $rootScope, $mdSidenav, $mdMenu, UserService, MenuService, PostService)->
+.controller 'HeaderCtrl', ['$scope', '$rootScope', '$location', '$httpParamSerializer', '$routeParams', '$mdSidenav',
+  '$mdMenu',
+  'UserService', 'MenuService', 'PostService', 'DateRangeService',
+  ($scope, $rootScope, $location, $httpParamSerializer, $routeParams, $mdSidenav, $mdMenu, UserService, MenuService, PostService, DateRangeService)->
     $rootScope.headerScope = $scope
     $scope.$mdMenu = $mdMenu
     $scope.openMenu = ($mdOpenMenu, $event)->
@@ -26,5 +28,20 @@ angular
         location.href = search_url
     $scope.menu = MenuService.get()
     $scope.recentPosts = PostService.query()
-
+    $scope.date_range = DateRangeService.get {}, (data)->
+      $scope.knownMinDate = new Date(data['first_date'])
+      $scope.startDate = if $routeParams.after then new Date($routeParams.after) else $scope.knownMinDate
+      $scope.knownMaxDate = new Date(data['last_date'])
+      $scope.endDate = if $routeParams.before then new Date($routeParams.before) else $scope.knownMaxDate
+      $scope.filterButtonValid = true
+    addDay = (date)->
+      return new Date(date.getTime() + 86400000)
+    $scope.filterByDate = ->
+      filterDate = {}
+      if $scope.startDate > $scope.knownMinDate
+        filterDate['after'] = $scope.startDate.toISOString()
+      if addDay($scope.endDate) <= $scope.knownMaxDate
+        filterDate['before'] = addDay($scope.endDate).toISOString()
+      url = ['/?', $httpParamSerializer(filterDate)].join('')
+      $location.url(url)
 ]
