@@ -13,26 +13,45 @@
 	      href="<?php bloginfo( 'rss2_url' ); ?>">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet"
-	      href="<?php echo get_template_directory_uri(); ?>/bower_components/angular-material/angular-material.css">
-	<script src="<?php echo get_template_directory_uri(); ?>/bower_components/jquery/dist/jquery.js"
-	        type="text/javascript" defer></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/bower_components/angular/angular.js"
-	        type="text/javascript" defer></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/bower_components/angular-route/angular-route.js"
-	        type="text/javascript" defer></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/bower_components/angular-animate/angular-animate.js"
-	        type="text/javascript" defer></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/bower_components/angular-aria/angular-aria.js"
-	        type="text/javascript" defer></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/bower_components/angular-messages/angular-messages.js"
-	        type="text/javascript" defer></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/bower_components/angular-resource/angular-resource.js"
-	        type="text/javascript" defer></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/bower_components/angular-sanitize/angular-sanitize.js"
-	        type="text/javascript" defer></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/bower_components/angular-material/angular-material.js"
-	        type="text/javascript" defer></script>
+	<!--	<link rel="stylesheet"-->
+	<!--	      href="-->
+	<?php //echo get_template_directory_uri(); ?><!--/bower_components/angular-material/angular-material.css">-->
+	<!--	<script src="--><?php //echo get_template_directory_uri(); ?><!--/bower_components/jquery/dist/jquery.js"-->
+	<!--	        type="text/javascript" defer></script>-->
+	<!--	<script src="--><?php //echo get_template_directory_uri(); ?><!--/bower_components/angular/angular.js"-->
+	<!--	        type="text/javascript" defer></script>-->
+	<!--	<script src="-->
+	<?php //echo get_template_directory_uri(); ?><!--/bower_components/angular-route/angular-route.js"-->
+	<!--	        type="text/javascript" defer></script>-->
+	<!--	<script src="-->
+	<?php //echo get_template_directory_uri(); ?><!--/bower_components/angular-animate/angular-animate.js"-->
+	<!--	        type="text/javascript" defer></script>-->
+	<!--	<script src="-->
+	<?php //echo get_template_directory_uri(); ?><!--/bower_components/angular-aria/angular-aria.js"-->
+	<!--	        type="text/javascript" defer></script>-->
+	<!--	<script src="-->
+	<?php //echo get_template_directory_uri(); ?><!--/bower_components/angular-messages/angular-messages.js"-->
+	<!--	        type="text/javascript" defer></script>-->
+	<!--	<script src="-->
+	<?php //echo get_template_directory_uri(); ?><!--/bower_components/angular-resource/angular-resource.js"-->
+	<!--	        type="text/javascript" defer></script>-->
+	<!--	<script src="-->
+	<?php //echo get_template_directory_uri(); ?><!--/bower_components/angular-sanitize/angular-sanitize.js"-->
+	<!--	        type="text/javascript" defer></script>-->
+	<!--	<script src="-->
+	<?php //echo get_template_directory_uri(); ?><!--/bower_components/angular-material/angular-material.js"-->
+	<!--	        type="text/javascript" defer></script>-->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.js"></script>
+
 
 	<script type="text/javascript">
 		API_URL = '<?php echo rest_get_url_prefix();?>/wp/v2/';
@@ -44,14 +63,14 @@
 	</script>
 
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/app.css">
-	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/API.js" type="text/javascript" defer></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/app.js" type="text/javascript" defer></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/headerController.js" type="text/javascript"
-	        defer></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/indexController.js" type="text/javascript"
-	        defer></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/postController.js" type="text/javascript"
-	        defer></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/API.js" type="text/javascript"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/app.js" type="text/javascript"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/headerController.js"
+	        type="text/javascript"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/indexController.js"
+	        type="text/javascript"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/postController.js"
+	        type="text/javascript"></script>
 </head>
 <body layout="row" layout-fill ng-cloak>
 <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
@@ -127,6 +146,31 @@
 		<md-content layout="column" layout-gt-md="row" id="container">
 			<div ng-view layout-padding flex></div>
 			<md-content id="right-sidebar" layout-padding>
+				<md-card id="date-filter-widget" class="right-sidebar-widget">
+					<md-card-title>
+						<md-card-title-text>
+							<span class="md-headline">Filter by date</span>
+							<span class="md-subhead">Show only posts in date range</span>
+						</md-card-title-text>
+					</md-card-title>
+					<md-card-content layout="column">
+						<section layout="row">
+							<span flex>From Date</span>
+							<md-datepicker ng-model="startDate" md-max-date="endDate" md-min-date="knownMinDate"
+							               md-open-on-focus>
+							</md-datepicker>
+						</section>
+						<section layout="row">
+							<span flex>To Date</span>
+							<md-datepicker ng-model="endDate" md-min-date="startDate" md-max-date="knownMaxDate"
+							               md-open-on-focus>
+							</md-datepicker>
+						</section>
+						<md-button ng-disabled="!filterButtonValid" ng-click="filterByDate()">
+							show filtered posts
+						</md-button>
+					</md-card-content>
+				</md-card>
 				<md-card id="recent-post-widget" class="right-sidebar-widget">
 					<md-card-title>
 						<md-card-title-text>

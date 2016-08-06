@@ -121,6 +121,11 @@ if ( ! function_exists( 'register_routes' ) ):
 				)
 			)
 		) );
+		register_rest_route( 'wp/v2', 'date_range', array(
+			'methods'  => 'GET',
+			'callback' => 'get_date_range',
+			'args'     => array()
+		) );
 
 	}
 
@@ -136,6 +141,23 @@ if ( ! function_exists( 'register_routes' ) ):
 		ob_end_clean();
 		$result   = nest_comments( $comments );
 		$response = new WP_REST_Response( $result );
+
+		return $response;
+
+
+	}
+
+	function get_date_range( WP_REST_Request $request ) {
+		$args     = array(
+			'posts_per_page' => - 1,
+			'order'          => 'ASC',
+			'orderby'        => 'date'
+		);
+		$posts    = get_posts( $args );
+		$response = new WP_REST_Response( array(
+			'first_date' => $posts[0]->post_date,
+			'last_date'  => $posts[ count( $posts ) - 1 ]->post_date,
+		) );
 
 		return $response;
 

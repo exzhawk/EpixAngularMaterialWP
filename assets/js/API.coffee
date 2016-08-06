@@ -87,5 +87,13 @@ angular
       method: 'GET'
       isArray: true
       cache: true
-
+]
+.factory 'DateRangeService', ['$resource', ($resource)->
+  $resource 'wp-json/wp/v2/date_range',
+    {}
+  ,
+    get:
+      method: 'GET'
+      isArray: false
+      cache: true
 ]
