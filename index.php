@@ -203,6 +203,9 @@
 			<md-button ng-href="http://blog.exz.me">
 				Theme by Epix Zhang
 			</md-button>
+			<md-button ng-if="current_user_id=='0'" ng-href="{{adminUrl}}" class="md-icon-button" target="_blank">
+				<md-icon>build</md-icon>
+			</md-button>
 		</md-content>
 	</md-content>
 </md-content>
