@@ -56,18 +56,18 @@ angular
     return
 ]
 .directive 'gist', ['$timeout', ($timeout)->
-  restrict: 'E',
-  replace: true,
-  template: '<div class="gist"></div>',
+  restrict: 'E'
+  replace: true
+  template: '<div class="gist"></div>'
   link: (scope, element, attrs)->
     $timeout ->
       gistId = attrs.id
       fileName = attrs.file
-      iframe = document.createElement('iframe')
-      iframe.setAttribute('width', '100%');
-      iframe.setAttribute('frameborder', '0');
+      iframe = document.createElement 'iframe'
+      iframe.setAttribute 'width', '100%'
+      iframe.setAttribute 'frameborder', '0'
       iframe.id = 'gist-' + gistId
-      element[0].appendChild(iframe)
+      element[0].appendChild iframe
       iframeHtml = '<html><head><base target="_parent"></head>
                     <body onload="parent.document.getElementById(\'' + iframe.id + '\').style.height=document.body.scrollHeight + \'px\'">
                     <script type="text/javascript">
