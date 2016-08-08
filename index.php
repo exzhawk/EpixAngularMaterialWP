@@ -43,32 +43,6 @@
 	<?php //echo get_template_directory_uri(); ?><!--/bower_components/angular-material/angular-material.js"-->
 	<!--	        type="text/javascript" defer></script>-->
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js" defer></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js" defer></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js" defer></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js" defer></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.js" defer></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.js" defer></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js" defer></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js" defer></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.js" defer></script>
-
-
-	<script type="text/javascript">
-		API_URL = '<?php echo rest_get_url_prefix();?>/wp/v2/';
-		TEMPLATE_URL = '<?php echo get_template_directory_uri();?>/';
-		NONCE = '<?php echo wp_create_nonce( 'wp_rest' );?>';
-		CURRENT_USER_ID = '<?php echo wp_get_current_user()->ID;?>';
-		BLOG_URL = '<?php echo rtrim( get_bloginfo( 'url' ), '/' );?>';
-		BLOG_BARE_URL = '<?php echo preg_replace( '#^https?://#', '', rtrim( get_bloginfo( 'url' ), '/' ) );?>'
-	</script>
-
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/app.css">
-	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/API.js" defer></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/app.js" defer></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/headerController.js" defer></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/indexController.js" defer></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/postController.js" defer></script>
 </head>
 <body layout="row" layout-fill ng-cloak>
 <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
@@ -206,5 +180,31 @@
 		</md-content>
 	</md-content>
 </md-content>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.js"></script>
+
+
+<script type="text/javascript">
+	API_URL = '<?php echo rest_get_url_prefix();?>/wp/v2/';
+	TEMPLATE_URL = '<?php echo get_template_directory_uri();?>/';
+	NONCE = '<?php echo wp_create_nonce( 'wp_rest' );?>';
+	CURRENT_USER_ID = '<?php echo wp_get_current_user()->ID;?>';
+	BLOG_URL = '<?php echo rtrim( get_bloginfo( 'url' ), '/' );?>';
+	BLOG_BARE_URL = '<?php echo preg_replace( '#^https?://#', '', rtrim( get_bloginfo( 'url' ), '/' ) );?>'
+</script>
+
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/app.css">
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/API.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/app.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/headerController.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/indexController.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/postController.js"></script>
 </body>
 </html>
