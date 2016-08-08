@@ -62,6 +62,7 @@ angular
   link: (scope, element, attrs)->
     $timeout ->
       gistId = attrs.id
+      fileName = attrs.file
       iframe = document.createElement('iframe')
       iframe.setAttribute('width', '100%');
       iframe.setAttribute('frameborder', '0');
@@ -76,7 +77,7 @@ angular
                         for (var i=0;i<asl;i++){as[i].setAttribute("target","_blank")}
                       }
                     </script>
-                    <script type="text/javascript" src="https://gist.github.com/' + gistId + '.js" onload="retargetLinks()"></script>
+                    <script src="https://gist.github.com/' + gistId + '.js?file=' + fileName + '" onload="retargetLinks()"></script>
                     </body></html>'
       doc = iframe.document || iframe.contentDocument || iframe.contentWindow
       doc.open()

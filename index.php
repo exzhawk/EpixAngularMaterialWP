@@ -43,15 +43,15 @@
 	<?php //echo get_template_directory_uri(); ?><!--/bower_components/angular-material/angular-material.js"-->
 	<!--	        type="text/javascript" defer></script>-->
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.js" defer></script>
 
 
 	<script type="text/javascript">
@@ -64,14 +64,11 @@
 	</script>
 
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/app.css">
-	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/API.js" type="text/javascript"></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/app.js" type="text/javascript"></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/headerController.js"
-	        type="text/javascript"></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/indexController.js"
-	        type="text/javascript"></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/postController.js"
-	        type="text/javascript"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/API.js" defer></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/app.js" defer></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/headerController.js" defer></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/indexController.js" defer></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/postController.js" defer></script>
 </head>
 <body layout="row" layout-fill ng-cloak>
 <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
