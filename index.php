@@ -11,6 +11,7 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo( 'name' ); ?> > Feed"
 	      href="<?php bloginfo( 'rss2_url' ); ?>">
+	<?php echo get_theme_mod( 'google_analytics', '' ); ?>
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
 	<!--	<link rel="stylesheet"-->

@@ -228,3 +228,29 @@ if ( ! function_exists( 'enable_extended_upload' ) ):
 	}
 endif;
 add_filter( 'upload_mimes', 'enable_extended_upload' );
+
+if ( ! function_exists( 'epix_customize_register' ) ):
+	function epix_customize_register( $wp_customize ) {
+		$wp_customize->add_section(
+			'header', array(
+				'title'       => 'Header',
+				'description' => 'Header injection',
+				'priority'    => 35,
+			)
+		);
+		$wp_customize->add_setting(
+			'google_analytics', array(
+				'default' => '',
+				'type'    => 'theme_mod',
+			)
+		);
+		$wp_customize->add_control(
+			'google_analytics', array(
+				'label'   => 'Google Analytics Script',
+				'section' => 'header',
+				'type'    => 'text',
+			)
+		);
+	}
+endif;
+add_action( 'customize_register', 'epix_customize_register' );
