@@ -14,34 +14,6 @@
 	<?php echo get_theme_mod( 'google_analytics', '' ); ?>
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
-	<!--	<link rel="stylesheet"-->
-	<!--	      href="-->
-	<?php //echo get_template_directory_uri(); ?><!--/bower_components/angular-material/angular-material.css">-->
-	<!--	<script src="--><?php //echo get_template_directory_uri(); ?><!--/bower_components/jquery/dist/jquery.js"-->
-	<!--	        type="text/javascript" defer></script>-->
-	<!--	<script src="--><?php //echo get_template_directory_uri(); ?><!--/bower_components/angular/angular.js"-->
-	<!--	        type="text/javascript" defer></script>-->
-	<!--	<script src="-->
-	<?php //echo get_template_directory_uri(); ?><!--/bower_components/angular-route/angular-route.js"-->
-	<!--	        type="text/javascript" defer></script>-->
-	<!--	<script src="-->
-	<?php //echo get_template_directory_uri(); ?><!--/bower_components/angular-animate/angular-animate.js"-->
-	<!--	        type="text/javascript" defer></script>-->
-	<!--	<script src="-->
-	<?php //echo get_template_directory_uri(); ?><!--/bower_components/angular-aria/angular-aria.js"-->
-	<!--	        type="text/javascript" defer></script>-->
-	<!--	<script src="-->
-	<?php //echo get_template_directory_uri(); ?><!--/bower_components/angular-messages/angular-messages.js"-->
-	<!--	        type="text/javascript" defer></script>-->
-	<!--	<script src="-->
-	<?php //echo get_template_directory_uri(); ?><!--/bower_components/angular-resource/angular-resource.js"-->
-	<!--	        type="text/javascript" defer></script>-->
-	<!--	<script src="-->
-	<?php //echo get_template_directory_uri(); ?><!--/bower_components/angular-sanitize/angular-sanitize.js"-->
-	<!--	        type="text/javascript" defer></script>-->
-	<!--	<script src="-->
-	<?php //echo get_template_directory_uri(); ?><!--/bower_components/angular-material/angular-material.js"-->
-	<!--	        type="text/javascript" defer></script>-->
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.css">
 </head>
 <body layout="row" layout-fill ng-cloak>
