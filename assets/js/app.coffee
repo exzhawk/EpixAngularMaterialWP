@@ -24,12 +24,12 @@ angular
 ]
 .factory 'TemplateURLProcessor', ($q)->
   request: (config) ->
-    if config.url.startsWith 'assets/'
+    if config.url.indexOf('assets/') == 0
       config.url = TEMPLATE_URL + config.url
     config
 .factory 'WPNonce', ($q)->
   request: (config) ->
-    if config.url.startsWith 'wp-json/'
+    if config.url.indexOf('wp-json/') == 0
       config.headers['X-WP-Nonce'] = NONCE
     config
 .config ['$httpProvider', ($httpProvider)->
